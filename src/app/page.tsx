@@ -18,21 +18,21 @@ export default function Home() {
         <div className="animate-fade-in space-y-4">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-white/60">
             <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-            AWS Summit Seoul 2025
+            AWS Summit Seoul 2026
           </div>
 
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">
             나의{" "}
             <span className="bg-gradient-to-r from-accent to-accent-secondary bg-clip-text text-transparent">
-              개발자 MBTI
+              Kiro MBTI
             </span>
             는?
           </h1>
 
           <p className="text-lg text-white/60 leading-relaxed">
-            AI 시대, 당신은 어떤 타입의 개발자인가요?
+            내 성향에 맞는 Kiro 사용법은?
             <br />
-            12개 질문으로 알아보세요!
+            16개 질문으로 알아보세요!
           </p>
         </div>
 

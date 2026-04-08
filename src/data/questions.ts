@@ -22,7 +22,7 @@ export const profileQuestions: ProfileQuestion[] = [
       { text: "PM/기획자", value: "pm" },
       { text: "디자이너", value: "designer" },
       { text: "데이터 분석가", value: "data" },
-      { text: "마케터/비즈니스", value: "business" },
+      { text: "마케터/비즈니스/세일즈", value: "business" },
       { text: "학생/취준생", value: "student" },
     ],
   },
@@ -81,122 +81,116 @@ export const mbtiQuestions: MBTIQuestion[] = [
   // ===== E/I 축: 외향 vs 내향 =====
   {
     id: 1,
-    question: "어려운 문제를 해결할 때 나는?",
+    question: "팀에 새로운 사람이 합류했다.",
     axis: "EI",
     choices: [
-      { text: "주변 사람들과 이야기하면서 답을 찾는다", direction: "E" },
-      { text: "혼자 조용히 생각을 정리하는 게 낫다", direction: "I" },
+      { text: "먼저 다가가서 이것저것 말을 건다", direction: "E" },
+      { text: "상대가 적응할 시간을 주고 필요할 때 도와준다", direction: "I" },
     ],
   },
   {
     id: 2,
-    question: "새로운 도구를 접하면?",
+    question: "업무 중 막히는 부분이 생기면?",
     axis: "EI",
     choices: [
-      { text: "일단 이것저것 눌러보고 써본다", direction: "E" },
-      { text: "가이드나 설명서를 먼저 읽어본다", direction: "I" },
+      { text: "이거 잘 하는 사람 누구지? 일단 찾아간다", direction: "E" },
+      { text: "일단 혼자 파보고 정리되면 공유한다", direction: "I" },
     ],
   },
   {
     id: 3,
-    question: "회의에서 나는?",
+    question: "팀 회의에서 새로운 주제가 나왔다.",
     axis: "EI",
     choices: [
-      {
-        text: "아이디어를 먼저 말하고 반응을 보며 발전시킨다",
-        direction: "E",
-      },
-      { text: "충분히 정리된 후에 발언한다", direction: "I" },
+      { text: "떠오르는 생각을 바로 꺼내서 반응을 보며 발전시킨다", direction: "E" },
+      { text: "머릿속으로 충분히 정리한 다음에 의견을 낸다", direction: "I" },
     ],
   },
 
   // ===== S/N 축: 감각 vs 직관 =====
   {
     id: 4,
-    question: "업무 보고를 할 때 나는?",
+    question: "팀에서 프로젝트 진행 상황을 공유해야 한다.",
     axis: "SN",
     choices: [
-      { text: "구체적인 수치와 사실 위주로 정리한다", direction: "S" },
-      { text: "큰 그림과 방향성 위주로 설명한다", direction: "N" },
+      { text: "완료 건수, 수치, 사실 위주로 정리한다", direction: "S" },
+      { text: "전체 방향성과 앞으로의 흐름 위주로 설명한다", direction: "N" },
     ],
   },
   {
     id: 5,
-    question: "계획을 세울 때 나는?",
+    question: "새 프로젝트의 로드맵을 짜야 한다.",
     axis: "SN",
     choices: [
-      { text: "현실적으로 가능한 범위부터 따진다", direction: "S" },
-      { text: "이상적인 결과를 먼저 그리고 역산한다", direction: "N" },
+      { text: "지금 리소스로 가능한 범위부터 따진다", direction: "S" },
+      { text: "최종 목표를 먼저 그리고 거기서 역산한다", direction: "N" },
     ],
   },
   {
     id: 6,
-    question: "정보를 받아들일 때 나는?",
+    question: "새로운 기술 트렌드가 화제다.",
     axis: "SN",
     choices: [
-      { text: "검증된 데이터와 사례를 신뢰한다", direction: "S" },
-      { text: "패턴과 가능성을 읽는 편이다", direction: "N" },
+      { text: "도입 사례나 벤치마크 데이터부터 찾아본다", direction: "S" },
+      { text: "이걸로 뭘 할 수 있을지 가능성부터 상상한다", direction: "N" },
     ],
   },
 
   // ===== T/F 축: 사고 vs 감정 =====
   {
     id: 7,
-    question: "팀에서 의견 충돌이 생기면?",
+    question: "팀에서 두 가지 방향을 놓고 의견이 갈린다.",
     axis: "TF",
     choices: [
-      { text: "논리적으로 더 나은 쪽을 선택해야 한다", direction: "T" },
-      {
-        text: "팀 분위기와 구성원 의견을 조율하는 게 중요하다",
-        direction: "F",
-      },
+      { text: "데이터와 근거를 비교해서 더 나은 쪽을 밀어야 한다", direction: "T" },
+      { text: "양쪽 입장을 듣고 모두가 납득할 수 있는 방향을 찾는다", direction: "F" },
     ],
   },
   {
     id: 8,
-    question: "피드백을 줄 때 나는?",
+    question: "동료의 작업물을 리뷰해야 한다.",
     axis: "TF",
     choices: [
-      { text: "개선점을 명확하고 직접적으로 전달한다", direction: "T" },
-      { text: "좋은 점을 먼저 말하고 부드럽게 제안한다", direction: "F" },
+      { text: "고쳐야 할 부분을 명확하게 짚어준다", direction: "T" },
+      { text: "잘한 점을 먼저 언급하고 개선점은 부드럽게 제안한다", direction: "F" },
     ],
   },
   {
     id: 9,
-    question: "결정을 내릴 때 가장 중요한 것은?",
+    question: "중요한 의사결정을 앞두고 있다. 가장 먼저 따지는 것은?",
     axis: "TF",
     choices: [
-      { text: "효율성과 결과", direction: "T" },
-      { text: "관련된 사람들에게 미치는 영향", direction: "F" },
+      { text: "효율성과 기대 결과", direction: "T" },
+      { text: "이 결정이 팀원들에게 미칠 영향", direction: "F" },
     ],
   },
 
   // ===== J/P 축: 판단 vs 인식 =====
   {
     id: 10,
-    question: "일을 시작할 때 나는?",
+    question: "새로운 프로젝트를 시작해야 한다. 가장 먼저 하는 것은?",
     axis: "JP",
     choices: [
-      { text: "할 일 목록을 먼저 만들고 순서대로 진행한다", direction: "J" },
-      { text: "일단 시작하고 흐름에 따라 유연하게 한다", direction: "P" },
+      { text: "할 일 목록부터 만들고 순서대로 진행한다", direction: "J" },
+      { text: "일단 손부터 대보고 흐름에 따라 조정한다", direction: "P" },
     ],
   },
   {
     id: 11,
-    question: "마감이 다가오면 나는?",
+    question: "마감이 얼마 남지 않았다.",
     axis: "JP",
     choices: [
-      { text: "이미 거의 끝나있다. 미리미리 하는 편", direction: "J" },
-      { text: "마감 직전에 집중력이 폭발한다", direction: "P" },
+      { text: "이미 거의 끝나있다. 마무리만 남은 상태", direction: "J" },
+      { text: "지금부터가 진짜다. 집중력이 폭발하는 타이밍", direction: "P" },
     ],
   },
   {
     id: 12,
-    question: "팀 프로젝트에서 내 역할은?",
+    question: "팀 프로젝트가 시작됐다. 나는 자연스럽게 어떤 역할?",
     axis: "JP",
     choices: [
-      { text: "일정과 역할 분담을 정리하는 사람", direction: "J" },
-      { text: "분위기 보면서 필요한 곳에 바로 투입되는 사람", direction: "P" },
+      { text: "일정표 만들고 역할을 나누는 사람", direction: "J" },
+      { text: "상황 보면서 필요한 곳에 바로 뛰어드는 사람", direction: "P" },
     ],
   },
 ];

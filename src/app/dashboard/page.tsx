@@ -119,7 +119,7 @@ export default function DashboardPage() {
           </span>
         </div>
         <p className="text-sm text-white/40">
-          AWS Summit Seoul 2025 · Kiro Booth 실시간 통계
+          AWS Summit Seoul 2026 · Kiro Booth 실시간 통계
         </p>
       </div>
 

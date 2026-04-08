@@ -13,12 +13,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "나의 개발자 MBTI는? | Kiro",
+  title: "나의 Kiro MBTI는? | Kiro",
   description:
-    "AI 시대, 당신은 어떤 개발자? 12개 질문으로 알아보는 나의 개발자 MBTI!",
+    "AI 시대, 당신은 어떤 타입? 16개 질문으로 알아보는 나의 MBTI!",
   openGraph: {
-    title: "나의 개발자 MBTI는? | Kiro",
-    description: "AI 시대, 당신은 어떤 개발자? 12개 질문으로 알아보세요!",
+    title: "나의 Kiro MBTI는? | Kiro",
+    description: "AI 시대, 당신은 어떤 타입? 16개 질문으로 알아보세요!",
     type: "website",
   },
 };

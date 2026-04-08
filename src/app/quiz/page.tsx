@@ -24,10 +24,16 @@ export default function QuizPage() {
   const [profileAnswers, setProfileAnswers] = useState<Record<string, string>>(
     {}
   );
-  const [mbtiScores, setMbtiScores] = useState<Record<AxisDirection, number>>({
-    E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0,
-  });
   const [mbtiAnswers, setMbtiAnswers] = useState<AxisDirection[]>([]);
+
+  // 점수는 항상 answers 배열에서 계산 (별도 state 없음 → 꼬일 수 없음)
+  const computeScores = (answers: AxisDirection[]) => {
+    const scores: Record<AxisDirection, number> = {
+      E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0,
+    };
+    answers.forEach((dir) => { scores[dir]++; });
+    return scores;
+  };
 
   // Animation
   const [animating, setAnimating] = useState(false);
@@ -74,25 +80,24 @@ export default function QuizPage() {
   const handleMBTIChoice = useCallback(
     (dir: AxisDirection) => {
       if (animating) return;
-      const newScores = { ...mbtiScores, [dir]: mbtiScores[dir] + 1 };
       const newAnswers = [...mbtiAnswers, dir];
-      setMbtiScores(newScores);
       setMbtiAnswers(newAnswers);
 
       transition(() => {
         if (mbtiIndex + 1 >= mbtiQuestions.length) {
+          const scores = computeScores(newAnswers);
           const type = [
-            newScores.E >= newScores.I ? "E" : "I",
-            newScores.S >= newScores.N ? "S" : "N",
-            newScores.T >= newScores.F ? "T" : "F",
-            newScores.J >= newScores.P ? "J" : "P",
+            scores.E >= scores.I ? "E" : "I",
+            scores.S >= scores.N ? "S" : "N",
+            scores.T >= scores.F ? "T" : "F",
+            scores.J >= scores.P ? "J" : "P",
           ].join("");
 
           // Save to sessionStorage (for result page)
           const localPayload = {
             profile: { ...profileAnswers },
             mbtiAnswers: newAnswers,
-            mbtiScores: newScores,
+            mbtiScores: scores,
             type,
           };
           sessionStorage.setItem("kiro-mbti-result", JSON.stringify(localPayload));
@@ -120,8 +125,31 @@ export default function QuizPage() {
         }
       });
     },
-    [animating, mbtiScores, mbtiAnswers, mbtiIndex, profileAnswers, router, transition]
+    [animating, mbtiAnswers, mbtiIndex, profileAnswers, router, transition]
   );
+
+  // ---- Go back handler ----
+  const handleGoBack = useCallback(() => {
+    if (animating) return;
+    if (phase === "profile" && profileIndex === 0) return; // 첫 질문이면 무시
+
+    transition(() => {
+      if (phase === "mbti" && mbtiIndex === 0) {
+        // MBTI 첫 문항 → 프로필 마지막 문항으로
+        setPhase("profile");
+        setProfileIndex(profileQuestions.length - 1);
+      } else if (phase === "mbti") {
+        // MBTI 이전 문항으로: 답변만 제거 (점수는 자동 계산)
+        setMbtiAnswers((prev) => prev.slice(0, -1));
+        setMbtiIndex(mbtiIndex - 1);
+      } else {
+        // 프로필 이전 문항으로
+        setProfileIndex(profileIndex - 1);
+      }
+    });
+  }, [animating, phase, profileIndex, mbtiIndex, mbtiAnswers, transition]);
+
+  const canGoBack = !(phase === "profile" && profileIndex === 0);
 
   // ---- Render ----
   const isProfile = phase === "profile";
@@ -224,6 +252,20 @@ export default function QuizPage() {
           </>
         )}
       </div>
+
+      {/* Back button */}
+      {canGoBack && (
+        <button
+          onClick={handleGoBack}
+          disabled={animating}
+          className="flex items-center gap-2 py-3 px-6 rounded-2xl bg-white/5 border border-white/10 text-white/50 hover:text-white/80 hover:bg-white/10 transition-all cursor-pointer disabled:cursor-default"
+        >
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          <span className="text-sm">이전 질문</span>
+        </button>
+      )}
 
       {/* Footer */}
       <div className="text-xs text-white/20 pt-4">Kiro Developer MBTI</div>
