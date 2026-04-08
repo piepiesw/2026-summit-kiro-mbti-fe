@@ -1,0 +1,98 @@
+[
+  {
+    "timestamp": "2026-04-07T06:47:11.313Z",
+    "answers": [
+      "I",
+      "E",
+      "I",
+      "N",
+      "N",
+      "S",
+      "T",
+      "F",
+      "F",
+      "J",
+      "P",
+      "J"
+    ],
+    "scores": {
+      "E": 1,
+      "I": 2,
+      "S": 1,
+      "N": 2,
+      "T": 1,
+      "F": 2,
+      "J": 2,
+      "P": 1
+    },
+    "type": "INFJ"
+  },
+  {
+    "timestamp": "2026-04-07T06:52:48.750Z",
+    "profile": {
+      "role": "developer",
+      "ai_frequency": "daily",
+      "ai_style": "autonomous",
+      "ai_expectation": "autonomous"
+    },
+    "mbtiAnswers": [
+      "I",
+      "E",
+      "E",
+      "N",
+      "S",
+      "N",
+      "T",
+      "T",
+      "T",
+      "J",
+      "J",
+      "J"
+    ],
+    "mbtiScores": {
+      "E": 2,
+      "I": 1,
+      "S": 1,
+      "N": 2,
+      "T": 3,
+      "F": 0,
+      "J": 3,
+      "P": 0
+    },
+    "type": "ENTJ"
+  },
+  {
+    "timestamp": "2026-04-07T07:04:05.071Z",
+    "profile": {
+      "role": "developer",
+      "ai_frequency": "daily",
+      "ai_style": "autonomous",
+      "ai_expectation": "autonomous"
+    },
+    "mbtiAnswers": [
+      "I",
+      "E",
+      "E",
+      "N",
+      "S",
+      "N",
+      "T",
+      "T",
+      "T",
+      "J",
+      "J",
+      "P"
+    ],
+    "mbtiScores": {
+      "E": 2,
+      "I": 1,
+      "S": 1,
+      "N": 2,
+      "T": 3,
+      "F": 0,
+      "J": 2,
+      "P": 1
+    },
+    "type": "ENTJ"
+  }
+]
