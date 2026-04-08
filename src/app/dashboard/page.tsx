@@ -229,9 +229,9 @@ export default function DashboardPage() {
                   ))}
                 </Pie>
                 <Tooltip
-                  formatter={(value: number, name: string) => [
+                  formatter={(value: unknown, name: unknown) => [
                     `${value}명`,
-                    name,
+                    String(name),
                   ]}
                   contentStyle={{
                     background: "#1a1a2e",

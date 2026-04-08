@@ -88,18 +88,30 @@ export default function QuizPage() {
             newScores.J >= newScores.P ? "J" : "P",
           ].join("");
 
-          // Save & submit
-          const payload = {
+          // Save to sessionStorage (for result page)
+          const localPayload = {
             profile: { ...profileAnswers },
             mbtiAnswers: newAnswers,
             mbtiScores: newScores,
             type,
           };
-          sessionStorage.setItem("kiro-mbti-result", JSON.stringify(payload));
-          fetch("/api/stats", {
+          sessionStorage.setItem("kiro-mbti-result", JSON.stringify(localPayload));
+
+          // Submit to API (flat structure)
+          const apiPayload: Record<string, string> = {
+            mbti_type: type,
+            role: profileAnswers.role,
+            ai_frequency: profileAnswers.ai_frequency,
+            ai_style: profileAnswers.ai_style,
+            ai_expectation: profileAnswers.ai_expectation,
+          };
+          newAnswers.forEach((dir, i) => {
+            apiPayload[`q${i + 1}`] = dir;
+          });
+          fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/results`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload),
+            body: JSON.stringify(apiPayload),
           }).catch(() => {});
 
           router.push(`/result?type=${type}`);
