@@ -5,6 +5,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { results } from "@/data/results";
 import { computeTop3, type KiroFeature } from "@/data/kiroFeatures";
 import { QRCodeSVG } from "qrcode.react";
+import Image from "next/image";
 
 function ResultContent() {
   const searchParams = useSearchParams();
@@ -63,7 +64,15 @@ function ResultContent() {
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10">
               <span className="text-sm text-white/50">나의 유형</span>
             </div>
-            <div className="text-6xl">{result.emoji}</div>
+            <div className="relative w-48 h-48 mx-auto">
+              <Image
+                src={`/kiro_characters/${type}.png`}
+                alt={`${result.type} Kiro character`}
+                fill
+                className="object-contain drop-shadow-[0_0_30px_rgba(var(--accent-rgb),0.3)]"
+                priority
+              />
+            </div>
             <div>
               <h1
                 className="text-3xl font-bold font-mono tracking-wider"
