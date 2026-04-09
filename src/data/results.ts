@@ -27,7 +27,7 @@ export const results: Record<string, MBTIResult> = {
     bestMatch: "ENFP",
     bestMatchComment: "당신의 체계에 창의적 에너지를 불어넣어 줄 파트너",
     challengeMatch: "ESTP",
-    challengeMatchComment: "서로 다른 속도감이 새로운 시각을 열어줄 수 있어요",
+    challengeMatchComment: "체계 vs 즉흥, 속도감 차이로 자주 부딪힐 수 있어요",
   },
   ISFJ: {
     type: "ISFJ",
@@ -42,7 +42,7 @@ export const results: Record<string, MBTIResult> = {
     bestMatch: "ENTP",
     bestMatchComment: "아이디어 폭발하는 동료의 든든한 실행 파트너",
     challengeMatch: "ENTJ",
-    challengeMatchComment: "리더십 스타일은 다르지만 서로에게 배울 점이 많아요",
+    challengeMatchComment: "추진력 강한 리더십에 치이기 쉬워요, 소통이 핵심!",
   },
   INFJ: {
     type: "INFJ",
@@ -57,7 +57,7 @@ export const results: Record<string, MBTIResult> = {
     bestMatch: "ENTP",
     bestMatchComment: "비전을 현실로 만들어줄 창의적 실행가",
     challengeMatch: "ESTP",
-    challengeMatchComment: "행동 우선 스타일이 때로는 좋은 자극이 돼요",
+    challengeMatchComment: "깊은 고민 vs 일단 실행, 페이스가 너무 달라 답답할 수 있어요",
   },
   INTJ: {
     type: "INTJ",
@@ -72,7 +72,7 @@ export const results: Record<string, MBTIResult> = {
     bestMatch: "ENFP",
     bestMatchComment: "전략에 열정을 더해줄 최고의 브레인스토밍 파트너",
     challengeMatch: "ESFP",
-    challengeMatchComment: "즉흥적인 에너지가 의외의 돌파구를 만들기도 해요",
+    challengeMatchComment: "계획적인 전략가 vs 즉흥적 에너자이저, 충돌이 잦아요",
   },
   ISTP: {
     type: "ISTP",
@@ -87,7 +87,7 @@ export const results: Record<string, MBTIResult> = {
     bestMatch: "ENFJ",
     bestMatchComment: "기술적 깊이와 사람 중심 리더십의 완벽한 조합",
     challengeMatch: "ENFP",
-    challengeMatchComment: "다른 관점이 문제 해결의 새 경로를 열어줄 수 있어요",
+    challengeMatchComment: "혼자 집중하고 싶은데 에너지 폭발에 지칠 수 있어요",
   },
   ISFP: {
     type: "ISFP",
@@ -102,7 +102,7 @@ export const results: Record<string, MBTIResult> = {
     bestMatch: "ENTJ",
     bestMatchComment: "비전을 실현할 때 감성적 디테일을 채워주는 관계",
     challengeMatch: "INTP",
-    challengeMatchComment: "이론 vs 감각, 둘 다 있어야 좋은 제품이 나와요",
+    challengeMatchComment: "감성적 접근 vs 논리적 분석, 대화가 자꾸 엇갈려요",
   },
   INFP: {
     type: "INFP",
@@ -117,7 +117,7 @@ export const results: Record<string, MBTIResult> = {
     bestMatch: "ENFJ",
     bestMatchComment: "이상을 함께 실현해줄 영감 넘치는 리더",
     challengeMatch: "ESTJ",
-    challengeMatchComment: "체계적인 시선이 아이디어를 현실로 만드는 데 도움돼요",
+    challengeMatchComment: "자유로운 영혼에게 프로세스 강요는 스트레스 그 자체예요",
   },
   INTP: {
     type: "INTP",
@@ -132,7 +132,7 @@ export const results: Record<string, MBTIResult> = {
     bestMatch: "ENTJ",
     bestMatchComment: "이론과 실행력의 드림팀",
     challengeMatch: "ESFJ",
-    challengeMatchComment: "사람 중심의 관점이 기술에 따뜻함을 더해줘요",
+    challengeMatchComment: "혼자 몰입하고 싶은데 자꾸 케어해주려 해서 부담스러워요",
   },
   ESTP: {
     type: "ESTP",
@@ -147,7 +147,7 @@ export const results: Record<string, MBTIResult> = {
     bestMatch: "INFJ",
     bestMatchComment: "빠른 실행에 깊은 통찰을 더해줄 파트너",
     challengeMatch: "INFP",
-    challengeMatchComment: "서로의 페이스를 존중하면 의외로 좋은 팀이 돼요",
+    challengeMatchComment: "빠른 실행 vs 깊은 고민, 템포 차이가 답답함을 유발해요",
   },
   ESFP: {
     type: "ESFP",
@@ -162,7 +162,7 @@ export const results: Record<string, MBTIResult> = {
     bestMatch: "INTJ",
     bestMatchComment: "에너지와 전략이 만나면 최고의 결과물이 나와요",
     challengeMatch: "ISTJ",
-    challengeMatchComment: "꼼꼼함이 프로토타입을 프로덕션으로 만들어줘요",
+    challengeMatchComment: "자유분방함 vs 철저한 규칙, 서로 갑갑하게 느껴져요",
   },
   ENFP: {
     type: "ENFP",
@@ -177,7 +177,7 @@ export const results: Record<string, MBTIResult> = {
     bestMatch: "INTJ",
     bestMatchComment: "열정을 전략적으로 실현해줄 완벽한 파트너",
     challengeMatch: "ISTP",
-    challengeMatchComment: "깊이 파고드는 스타일에서 배울 점이 많아요",
+    challengeMatchComment: "열정적으로 공유하고 싶은데 반응이 없으면 김 빠져요",
   },
   ENTP: {
     type: "ENTP",
@@ -192,7 +192,7 @@ export const results: Record<string, MBTIResult> = {
     bestMatch: "INFJ",
     bestMatchComment: "아이디어에 방향성과 의미를 더해줄 비전 파트너",
     challengeMatch: "ISFJ",
-    challengeMatchComment: "꾸준한 실행력이 아이디어를 완성시켜줘요",
+    challengeMatchComment: "아이디어 폭주 vs 안정 추구, 방향이 자꾸 안 맞아요",
   },
   ESTJ: {
     type: "ESTJ",
@@ -207,7 +207,7 @@ export const results: Record<string, MBTIResult> = {
     bestMatch: "ISTP",
     bestMatchComment: "체계적 관리와 기술적 깊이의 황금 조합",
     challengeMatch: "INFP",
-    challengeMatchComment: "감성적 시각이 프로세스에 유연함을 더해줘요",
+    challengeMatchComment: "효율 중시 vs 의미 중시, 우선순위가 계속 충돌해요",
   },
   ESFJ: {
     type: "ESFJ",
@@ -222,7 +222,7 @@ export const results: Record<string, MBTIResult> = {
     bestMatch: "ISTP",
     bestMatchComment: "따뜻한 케어와 묵직한 기술력의 든든한 조합",
     challengeMatch: "INTP",
-    challengeMatchComment: "다른 소통 스타일이지만 서로 성장할 수 있어요",
+    challengeMatchComment: "따뜻하게 다가가도 혼자 있고 싶어하면 서운해요",
   },
   ENFJ: {
     type: "ENFJ",
@@ -237,7 +237,7 @@ export const results: Record<string, MBTIResult> = {
     bestMatch: "INFP",
     bestMatchComment: "비전과 이상을 함께 실현할 영혼의 팀메이트",
     challengeMatch: "ISTP",
-    challengeMatchComment: "독립적인 스타일이지만 기술적 깊이를 존경하게 돼요",
+    challengeMatchComment: "함께 나아가고 싶은데 혼자 파고드니 리딩이 어려워요",
   },
   ENTJ: {
     type: "ENTJ",
@@ -252,6 +252,6 @@ export const results: Record<string, MBTIResult> = {
     bestMatch: "INTP",
     bestMatchComment: "실행력과 이론의 완벽한 콤비",
     challengeMatch: "ISFP",
-    challengeMatchComment: "섬세한 감각이 빠른 실행에 품질을 더해줘요",
+    challengeMatchComment: "빠른 결단 vs 신중한 감성, 의사결정 스타일이 정반대예요",
   },
 };

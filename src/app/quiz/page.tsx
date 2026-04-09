@@ -156,7 +156,7 @@ export default function QuizPage() {
   const partLabel = isProfile ? "PART 1 — 나에 대해" : "PART 2 — MBTI 검사";
 
   return (
-    <main className="flex-1 flex flex-col items-center justify-between px-6 py-8 max-w-lg mx-auto w-full">
+    <main className="flex-1 flex flex-col items-center justify-between px-6 py-8 md:px-12 md:py-12 max-w-lg md:max-w-2xl mx-auto w-full">
       {/* Progress */}
       <div className="w-full space-y-3">
         <div className="flex justify-between items-center text-sm text-white/40">
@@ -189,7 +189,7 @@ export default function QuizPage() {
               <span className="inline-block px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-mono">
                 {profileQuestions[profileIndex].statLabel}
               </span>
-              <h2 className="text-2xl sm:text-3xl font-bold leading-snug">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold leading-snug">
                 {profileQuestions[profileIndex].question}
               </h2>
             </div>
@@ -199,13 +199,13 @@ export default function QuizPage() {
                   key={c.value}
                   onClick={() => handleProfileChoice(c.value)}
                   disabled={animating}
-                  className="choice-card w-full p-4 rounded-2xl bg-white/5 border border-white/10 text-left hover:bg-white/10 hover:border-accent/30 transition-all cursor-pointer disabled:cursor-default"
+                  className="choice-card w-full p-4 md:p-5 rounded-2xl bg-white/5 border border-white/10 text-left hover:bg-white/10 hover:border-accent/30 transition-all cursor-pointer disabled:cursor-default"
                 >
                   <div className="flex items-center gap-3">
                     <span className="shrink-0 w-7 h-7 rounded-full bg-accent/10 text-accent flex items-center justify-center text-xs font-bold">
                       {String.fromCharCode(65 + i)}
                     </span>
-                    <span className="text-base leading-relaxed">{c.text}</span>
+                    <span className="text-base md:text-lg leading-relaxed">{c.text}</span>
                   </div>
                 </button>
               ))}
@@ -218,7 +218,7 @@ export default function QuizPage() {
               <span className="text-sm text-accent font-mono">
                 Q{mbtiQuestions[mbtiIndex].id}
               </span>
-              <h2 className="text-2xl sm:text-3xl font-bold leading-snug">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold leading-snug">
                 {mbtiQuestions[mbtiIndex].question}
               </h2>
             </div>
@@ -228,23 +228,23 @@ export default function QuizPage() {
                   key={c.direction}
                   onClick={() => handleMBTIChoice(c.direction)}
                   disabled={animating}
-                  className={`choice-card w-full p-5 rounded-2xl bg-white/5 border border-white/10 text-left hover:bg-white/10 transition-all cursor-pointer disabled:cursor-default ${
-                    i === 0
-                      ? "hover:border-accent/30"
-                      : "hover:border-accent-secondary/30"
-                  }`}
+                  className="choice-card w-full p-5 md:p-6 rounded-2xl bg-white/5 border border-white/10 text-left hover:bg-white/10 transition-all cursor-pointer disabled:cursor-default"
+                  style={{
+                    borderColor: i === 0 ? undefined : undefined,
+                  }}
                 >
                   <div className="flex items-start gap-4">
                     <span
-                      className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
+                      className="shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center text-sm md:text-base font-bold"
+                      style={
                         i === 0
-                          ? "bg-accent/10 text-accent"
-                          : "bg-accent-secondary/10 text-accent-secondary"
-                      }`}
+                          ? { background: "rgba(144, 70, 255, 0.15)", color: "#9046FF" }
+                          : { background: "rgba(56, 189, 248, 0.15)", color: "#38bdf8" }
+                      }
                     >
                       {i === 0 ? "A" : "B"}
                     </span>
-                    <span className="text-lg leading-relaxed">{c.text}</span>
+                    <span className="text-lg md:text-xl leading-relaxed">{c.text}</span>
                   </div>
                 </button>
               ))}

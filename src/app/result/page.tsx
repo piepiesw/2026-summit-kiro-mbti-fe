@@ -55,27 +55,59 @@ function ResultContent() {
   const challengeMatchResult = results[result.challengeMatch];
 
   return (
-    <main className="flex-1 flex flex-col items-center px-6 py-8 max-w-lg mx-auto w-full">
+    <main className="flex-1 flex flex-col items-center px-6 py-8 md:px-12 md:py-12 max-w-lg md:max-w-2xl mx-auto w-full">
+      <style>{`
+        @keyframes ghostFloat {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-16px); }
+        }
+        @keyframes glowPulse {
+          0%, 100% { opacity: 0.6; transform: scale(2.2); }
+          50% { opacity: 1; transform: scale(2.5); }
+        }
+      `}</style>
       {/* Result Card */}
       <div className="animate-fade-in w-full">
-        <div className="result-card bg-background p-8 space-y-6">
+        <div className="result-card bg-background p-8 md:p-12 space-y-6 md:space-y-8">
           {/* Type badge */}
           <div className="text-center space-y-4">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10">
-              <span className="text-sm text-white/50">나의 유형</span>
-            </div>
-            <div className="relative w-48 h-48 mx-auto">
+            <h2 className="text-2xl md:text-3xl font-bold" style={{ color: "#c084fc" }}>
+              나의 Kiro MBTI는?
+            </h2>
+            <div className="relative w-72 h-72 md:w-96 md:h-96 mx-auto my-8 md:my-12">
+              {/* Purple glow behind character */}
+              <div
+                className="absolute inset-0 w-full h-full rounded-full pointer-events-none blur-3xl"
+                style={{
+                  background: "radial-gradient(circle, rgba(124,92,252,0.5) 0%, rgba(124,92,252,0.25) 40%, rgba(100,60,255,0.1) 65%, transparent 85%)",
+                  transform: "scale(2.2)",
+                  animation: "glowPulse 4s ease-in-out infinite",
+                }}
+              />
+              {/* Secondary glow layer for depth */}
+              <div
+                className="absolute inset-0 w-full h-full rounded-full pointer-events-none blur-2xl"
+                style={{
+                  background: "radial-gradient(circle, rgba(160,120,255,0.3) 0%, transparent 60%)",
+                  transform: "scale(1.4)",
+                  animation: "glowPulse 4s ease-in-out 2s infinite",
+                }}
+              />
               <Image
                 src={`/kiro_characters/${type}.png`}
                 alt={`${result.type} Kiro character`}
                 fill
-                className="object-contain drop-shadow-[0_0_30px_rgba(var(--accent-rgb),0.3)]"
+                className="object-contain"
+                style={{
+                  animation: "ghostFloat 3s ease-in-out infinite",
+                  filter: "drop-shadow(0 0 6px rgba(124, 92, 252, 0.9)) drop-shadow(0 0 20px rgba(124, 92, 252, 0.6)) drop-shadow(0 0 50px rgba(124, 92, 252, 0.35))",
+                }}
                 priority
               />
             </div>
             <div>
               <h1
-                className="text-3xl font-bold font-mono tracking-wider"
+                className="text-3xl md:text-5xl font-bold font-mono tracking-wider"
                 style={{
                   background: `linear-gradient(135deg, var(--accent), var(--accent-secondary))`,
                   WebkitBackgroundClip: "text",
@@ -84,8 +116,8 @@ function ResultContent() {
               >
                 {result.type}
               </h1>
-              <h2 className="text-2xl font-bold mt-2">{result.title}</h2>
-              <p className="text-white/50 mt-1">{result.subtitle}</p>
+              <h2 className="text-2xl md:text-3xl font-bold mt-2">{result.title}</h2>
+              <p className="text-white/50 mt-1 md:text-lg">{result.subtitle}</p>
             </div>
           </div>
 
@@ -93,7 +125,7 @@ function ResultContent() {
           <div className="animate-fade-in-delay-1">
             <div className="relative px-6 py-4 rounded-xl bg-white/5 border border-white/10">
               <span className="absolute -top-3 left-4 text-2xl text-accent/40">&ldquo;</span>
-              <p className="text-white/80 text-center italic leading-relaxed">
+              <p className="text-white/80 text-center italic leading-relaxed md:text-lg">
                 {result.quote}
               </p>
               <span className="absolute -bottom-3 right-4 text-2xl text-accent/40">&rdquo;</span>
@@ -102,21 +134,21 @@ function ResultContent() {
 
           {/* Description */}
           <div className="animate-fade-in-delay-1">
-            <p className="text-white/70 leading-relaxed text-center">
+            <p className="text-white/70 leading-relaxed text-center md:text-lg">
               {result.description}
             </p>
           </div>
 
           {/* Strengths */}
           <div className="animate-fade-in-delay-2 space-y-3">
-            <h3 className="text-sm font-bold text-accent uppercase tracking-wider">
+            <h3 className="text-sm md:text-base font-bold text-accent uppercase tracking-wider">
               Strengths
             </h3>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 md:gap-3">
               {result.strengths.map((s) => (
                 <span
                   key={s}
-                  className="px-3 py-1.5 rounded-full bg-accent/10 text-accent text-sm border border-accent/20"
+                  className="px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-accent/10 text-accent text-sm md:text-base border border-accent/20"
                 >
                   {s}
                 </span>
@@ -209,7 +241,7 @@ function ResultContent() {
               {/* Challenge Match */}
               <div className="p-4 rounded-xl bg-accent-secondary/5 border border-accent-secondary/20 space-y-2">
                 <div className="text-xs text-accent-secondary font-bold">
-                  다른 매력의 조합
+                  ⚠️ 안 맞는 조합
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-2xl">
@@ -252,13 +284,24 @@ function ResultContent() {
       <div className="animate-fade-in-delay-4 w-full space-y-3 mt-8">
         <button
           onClick={handleShare}
-          className="w-full py-4 px-8 rounded-2xl bg-gradient-to-r from-accent to-accent-secondary text-background font-bold text-lg hover:opacity-90 transition-opacity cursor-pointer"
+          className="group relative w-full py-4 px-8 rounded-2xl font-bold text-lg cursor-pointer overflow-hidden transition-all hover:scale-[1.02] active:scale-[0.98]"
+          style={{
+            background: "linear-gradient(135deg, #9046FF 0%, #b060ff 50%, #c084fc 100%)",
+            color: "#fff",
+            boxShadow: "0 4px 24px rgba(144, 70, 255, 0.35), inset 0 1px 0 rgba(255,255,255,0.15)",
+          }}
         >
-          결과 공유하기
+          <span className="relative z-10">결과 공유하기</span>
+          <div className="absolute inset-0 bg-gradient-to-t from-transparent to-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
         </button>
         <button
           onClick={handleRetry}
-          className="w-full py-4 px-8 rounded-2xl bg-white/5 border border-white/10 text-white/60 font-medium hover:bg-white/10 transition-colors cursor-pointer"
+          className="w-full py-4 px-8 rounded-2xl font-medium cursor-pointer transition-all hover:scale-[1.02] active:scale-[0.98] backdrop-blur-md"
+          style={{
+            background: "rgba(144, 70, 255, 0.06)",
+            border: "1px solid rgba(144, 70, 255, 0.2)",
+            color: "rgba(255,255,255,0.6)",
+          }}
         >
           다시 테스트하기
         </button>
