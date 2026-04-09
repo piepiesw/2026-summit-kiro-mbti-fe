@@ -74,7 +74,7 @@ function ResultContent() {
             <h2 className="text-2xl md:text-3xl font-bold" style={{ color: "#c084fc" }}>
               나의 Kiro MBTI는?
             </h2>
-            <div className="relative w-72 h-72 md:w-96 md:h-96 mx-auto my-8 md:my-12">
+            <div className="relative w-72 h-72 md:w-96 md:h-96 mx-auto mt-6 md:mt-10 -mb-4 md:-mb-6">
               {/* Purple glow behind character */}
               <div
                 className="absolute inset-0 w-full h-full rounded-full pointer-events-none blur-3xl"
