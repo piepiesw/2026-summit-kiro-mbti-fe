@@ -58,7 +58,7 @@ function ResultContent() {
   const challengeMatchResult = results[result.challengeMatch];
 
   return (
-    <main className="flex-1 flex flex-col items-center px-6 py-8 md:px-12 md:py-12 lg:px-16 lg:py-14 xl:py-16 max-w-lg md:max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto w-full">
+    <main className="flex-1 flex flex-col items-center px-4 py-6 sm:px-6 sm:py-8 md:px-12 md:py-12 lg:px-16 lg:py-14 xl:py-16 max-w-lg md:max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto w-full">
       <style>{`
         @keyframes ghostFloat {
           0%, 100% { transform: translateY(0); }
@@ -71,13 +71,13 @@ function ResultContent() {
       `}</style>
       {/* Result Card */}
       <div className="animate-fade-in w-full">
-        <div className="result-card bg-background p-8 md:p-12 lg:p-14 xl:p-16 space-y-6 md:space-y-8 lg:space-y-10">
+        <div className="result-card bg-background p-5 sm:p-8 md:p-12 lg:p-14 xl:p-16 space-y-5 sm:space-y-6 md:space-y-8 lg:space-y-10">
           {/* Type badge */}
           <div className="text-center space-y-4">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold" style={{ color: "#c084fc" }}>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold" style={{ color: "#c084fc" }}>
               나의 Kiro MBTI는?
             </h2>
-            <div className="relative w-72 h-72 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] xl:w-[32rem] xl:h-[32rem] mx-auto mt-6 md:mt-10 lg:mt-12 -mb-4 md:-mb-6 lg:-mb-8">
+            <div className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] xl:w-[32rem] xl:h-[32rem] mx-auto mt-4 sm:mt-6 md:mt-10 lg:mt-12 -mb-2 sm:-mb-4 md:-mb-6 lg:-mb-8">
               {/* Purple glow behind character */}
               <div
                 className="absolute inset-0 w-full h-full rounded-full pointer-events-none blur-3xl"
@@ -110,7 +110,7 @@ function ResultContent() {
             </div>
             <div>
               <h1
-                className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold font-mono tracking-wider"
+                className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold font-mono tracking-wider"
                 style={{
                   background: `linear-gradient(135deg, var(--accent), var(--accent-secondary))`,
                   WebkitBackgroundClip: "text",
@@ -119,16 +119,16 @@ function ResultContent() {
               >
                 {result.type}
               </h1>
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mt-2">{result.title}</h2>
-              <p className="text-white/50 mt-1 md:text-lg lg:text-xl">{result.subtitle}</p>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mt-2">{result.title}</h2>
+              <p className="text-white/50 mt-1 text-sm sm:text-base md:text-lg lg:text-xl">{result.subtitle}</p>
             </div>
           </div>
 
           {/* Quote */}
           <div className="animate-fade-in-delay-1">
-            <div className="relative px-6 py-4 lg:px-8 lg:py-5 rounded-xl bg-white/5 border border-white/10">
+            <div className="relative px-4 py-3 sm:px-6 sm:py-4 lg:px-8 lg:py-5 rounded-xl bg-white/5 border border-white/10">
               <span className="absolute -top-3 left-4 text-2xl lg:text-3xl text-accent/40">&ldquo;</span>
-              <p className="text-white/80 text-center italic leading-relaxed md:text-lg lg:text-xl">
+              <p className="text-white/80 text-center italic leading-relaxed text-sm sm:text-base md:text-lg lg:text-xl">
                 {result.quote}
               </p>
               <span className="absolute -bottom-3 right-4 text-2xl lg:text-3xl text-accent/40">&rdquo;</span>
@@ -137,7 +137,7 @@ function ResultContent() {
 
           {/* Description */}
           <div className="animate-fade-in-delay-1">
-            <p className="text-white/70 leading-relaxed text-center md:text-lg lg:text-xl">
+            <p className="text-white/70 leading-relaxed text-center text-sm sm:text-base md:text-lg lg:text-xl">
               {result.description}
             </p>
           </div>
@@ -147,11 +147,11 @@ function ResultContent() {
             <h3 className="text-base md:text-lg lg:text-xl font-bold text-accent uppercase tracking-wider">
               Strengths
             </h3>
-            <div className="flex flex-wrap gap-3 md:gap-4">
+            <div className="flex flex-wrap gap-2 sm:gap-3 md:gap-4">
               {result.strengths.map((s) => (
                 <span
                   key={s}
-                  className="px-5 py-2 md:px-6 md:py-2.5 lg:px-7 lg:py-3 rounded-full bg-accent/10 text-accent text-base md:text-lg lg:text-xl font-medium border border-accent/20"
+                  className="px-3.5 py-1.5 sm:px-5 sm:py-2 md:px-6 md:py-2.5 lg:px-7 lg:py-3 rounded-full bg-accent/10 text-accent text-sm sm:text-base md:text-lg lg:text-xl font-medium border border-accent/20"
                 >
                   {s}
                 </span>
@@ -174,13 +174,13 @@ function ResultContent() {
                           expandedFeature === feature.id ? null : feature.id
                         )
                       }
-                      className="w-full flex items-center gap-4 p-4 lg:p-5 rounded-xl bg-gradient-to-br from-accent/5 to-accent-secondary/5 border border-white/10 hover:border-accent/30 transition-all cursor-pointer"
+                      className="w-full flex items-center gap-3 sm:gap-4 p-3 sm:p-4 lg:p-5 rounded-xl bg-gradient-to-br from-accent/5 to-accent-secondary/5 border border-white/10 hover:border-accent/30 transition-all cursor-pointer"
                     >
                       <span className="text-xs font-mono text-accent/60 font-bold">
                         #{i + 1}
                       </span>
                       <span className="text-xl">{feature.emoji}</span>
-                      <span className="font-bold text-white text-lg lg:text-xl flex-1 text-left">
+                      <span className="font-bold text-white text-base sm:text-lg lg:text-xl flex-1 text-left">
                         {feature.name}
                       </span>
                       <svg
@@ -226,7 +226,7 @@ function ResultContent() {
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-5">
               {/* Best Match */}
-              <div className="p-5 lg:p-6 rounded-2xl bg-accent/5 border border-accent/20 space-y-4">
+              <div className="p-4 sm:p-5 lg:p-6 rounded-xl sm:rounded-2xl bg-accent/5 border border-accent/20 space-y-3 sm:space-y-4">
                 <div className="text-sm lg:text-base text-accent font-bold">잘 맞는 조합</div>
                 <div className="flex items-center gap-4 lg:gap-5">
                   <span className="text-3xl lg:text-4xl">{bestMatchResult?.emoji}</span>
@@ -244,7 +244,7 @@ function ResultContent() {
                 </p>
               </div>
               {/* Challenge Match */}
-              <div className="p-5 lg:p-6 rounded-2xl bg-accent-secondary/5 border border-accent-secondary/20 space-y-4">
+              <div className="p-4 sm:p-5 lg:p-6 rounded-xl sm:rounded-2xl bg-accent-secondary/5 border border-accent-secondary/20 space-y-3 sm:space-y-4">
                 <div className="text-sm lg:text-base text-accent-secondary font-bold">
                   안 맞는 조합
                 </div>
@@ -268,7 +268,7 @@ function ResultContent() {
             </div>
           </div>
 
-          {/* QR Code */}
+          {/* QR Code - 태블릿에서만 표시 */}
           {currentUrl && (
             <div className="animate-fade-in-delay-4 flex flex-col items-center space-y-2 pt-6 lg:pt-8">
               <h3 className="text-base md:text-lg lg:text-xl font-bold text-accent uppercase tracking-wider">
@@ -277,8 +277,8 @@ function ResultContent() {
               <div className="p-3 lg:p-4 bg-white rounded-xl">
                 <QRCodeSVG value={currentUrl} size={120} className="lg:!w-[160px] lg:!h-[160px]" />
               </div>
-              <p className="text-xs text-white/30">
-                카메라로 스캔하면 이 결과를 바로 볼 수 있어요
+              <p className="text-xs sm:text-sm text-white/30">
+                스캔하면 핸드폰에서 결과 이미지를 저장할 수 있어요
               </p>
             </div>
           )}
@@ -286,10 +286,10 @@ function ResultContent() {
       </div>
 
       {/* Actions */}
-      <div className="animate-fade-in-delay-4 w-full max-w-md lg:max-w-lg mx-auto mt-8 lg:mt-10">
+      <div className="animate-fade-in-delay-4 w-full max-w-md lg:max-w-lg mx-auto mt-6 sm:mt-8 lg:mt-10">
         <button
           onClick={handleRetry}
-          className="w-full py-4 px-8 lg:py-5 lg:px-10 rounded-2xl font-medium lg:text-lg cursor-pointer transition-all hover:scale-[1.02] active:scale-[0.98] backdrop-blur-md"
+          className="w-full py-3.5 px-6 sm:py-4 sm:px-8 lg:py-5 lg:px-10 rounded-xl sm:rounded-2xl font-medium sm:text-lg cursor-pointer transition-all hover:scale-[1.02] active:scale-[0.98] backdrop-blur-md"
           style={{
             background: "rgba(144, 70, 255, 0.06)",
             border: "1px solid rgba(144, 70, 255, 0.2)",

@@ -165,7 +165,7 @@ export default function QuizPage() {
   const partLabel = isProfile ? "PART 1 — 나에 대해" : "PART 2 — MBTI 검사";
 
   return (
-    <main className="flex-1 flex flex-col items-center justify-between px-6 py-8 md:px-12 md:py-12 lg:px-16 lg:py-14 xl:py-16 max-w-lg md:max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto w-full">
+    <main className="flex-1 flex flex-col items-center justify-between px-4 py-6 sm:px-6 sm:py-8 md:px-12 md:py-12 lg:px-16 lg:py-14 xl:py-16 max-w-lg md:max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto w-full">
       {/* Progress */}
       <div className="w-full space-y-3">
         <div className="flex justify-between items-center text-sm lg:text-base text-white/40">
@@ -194,27 +194,27 @@ export default function QuizPage() {
         {isProfile ? (
           // ===== PROFILE QUESTION =====
           <>
-            <div className="text-center space-y-2 mb-8">
+            <div className="text-center space-y-2 mb-6 sm:mb-8">
               <span className="inline-block px-3 py-1 lg:px-4 lg:py-1.5 rounded-full bg-accent/10 text-accent text-xs lg:text-sm font-mono">
                 {profileQuestions[profileIndex].statLabel}
               </span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-snug">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-bold leading-snug break-keep">
                 {profileQuestions[profileIndex].question}
               </h2>
             </div>
-            <div className="w-full grid gap-3 lg:gap-4">
+            <div className="w-full grid gap-2.5 sm:gap-3 lg:gap-4">
               {profileQuestions[profileIndex].choices.map((c, i) => (
                 <button
                   key={c.value}
                   onClick={() => handleProfileChoice(c.value)}
                   disabled={animating}
-                  className="choice-card w-full p-4 md:p-5 lg:p-6 rounded-2xl bg-white/5 border border-white/10 text-left hover:bg-white/10 hover:border-accent/30 transition-all cursor-pointer disabled:cursor-default"
+                  className="choice-card w-full p-3 sm:p-4 md:p-5 lg:p-6 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 text-left hover:bg-white/10 hover:border-accent/30 transition-all cursor-pointer disabled:cursor-default"
                 >
-                  <div className="flex items-center gap-3 lg:gap-4">
-                    <span className="shrink-0 w-7 h-7 lg:w-9 lg:h-9 rounded-full bg-accent/10 text-accent flex items-center justify-center text-xs lg:text-sm font-bold">
+                  <div className="flex items-center gap-2.5 sm:gap-3 lg:gap-4">
+                    <span className="shrink-0 w-6 h-6 sm:w-7 sm:h-7 lg:w-9 lg:h-9 rounded-full bg-accent/10 text-accent flex items-center justify-center text-xs lg:text-sm font-bold">
                       {String.fromCharCode(65 + i)}
                     </span>
-                    <span className="text-base md:text-lg lg:text-xl leading-relaxed">{c.text}</span>
+                    <span className="text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed">{c.text}</span>
                   </div>
                 </button>
               ))}
@@ -223,28 +223,25 @@ export default function QuizPage() {
         ) : (
           // ===== MBTI QUESTION =====
           <>
-            <div className="text-center space-y-3 mb-10">
-              <span className="text-base md:text-lg text-accent font-mono font-bold">
+            <div className="text-center space-y-2 sm:space-y-3 mb-6 sm:mb-8 md:mb-10">
+              <span className="text-sm sm:text-base md:text-lg text-accent font-mono font-bold">
                 Q{mbtiQuestions[mbtiIndex].id}
               </span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-snug break-keep">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-bold leading-snug break-keep">
                 {mbtiQuestions[mbtiIndex].question}
               </h2>
             </div>
-            <div className="w-full space-y-4 lg:space-y-5">
+            <div className="w-full space-y-3 sm:space-y-4 lg:space-y-5">
               {mbtiQuestions[mbtiIndex].choices.map((c, i) => (
                 <button
                   key={c.direction}
                   onClick={() => handleMBTIChoice(c.direction)}
                   disabled={animating}
-                  className="choice-card w-full p-5 md:p-6 lg:p-7 rounded-2xl bg-white/5 border border-white/10 text-left hover:bg-white/10 transition-all cursor-pointer disabled:cursor-default"
-                  style={{
-                    borderColor: i === 0 ? undefined : undefined,
-                  }}
+                  className="choice-card w-full p-4 sm:p-5 md:p-6 lg:p-7 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 text-left hover:bg-white/10 transition-all cursor-pointer disabled:cursor-default"
                 >
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-3 sm:gap-4">
                     <span
-                      className="shrink-0 w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 rounded-full flex items-center justify-center text-sm md:text-base lg:text-lg font-bold"
+                      className="shrink-0 w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 lg:w-12 lg:h-12 rounded-full flex items-center justify-center text-sm md:text-base lg:text-lg font-bold"
                       style={
                         i === 0
                           ? { background: "rgba(144, 70, 255, 0.15)", color: "#9046FF" }
@@ -253,7 +250,7 @@ export default function QuizPage() {
                     >
                       {i === 0 ? "A" : "B"}
                     </span>
-                    <span className="text-lg md:text-xl lg:text-2xl leading-relaxed">{c.text}</span>
+                    <span className="text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed">{c.text}</span>
                   </div>
                 </button>
               ))}
@@ -267,7 +264,7 @@ export default function QuizPage() {
         <button
           onClick={handleGoBack}
           disabled={animating}
-          className="flex items-center gap-2 py-3 px-6 lg:py-4 lg:px-8 rounded-2xl bg-white/5 border border-white/10 text-white/50 hover:text-white/80 hover:bg-white/10 transition-all cursor-pointer disabled:cursor-default"
+          className="flex items-center gap-2 py-2.5 px-5 sm:py-3 sm:px-6 lg:py-4 lg:px-8 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 text-white/50 hover:text-white/80 hover:bg-white/10 transition-all cursor-pointer disabled:cursor-default"
         >
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>

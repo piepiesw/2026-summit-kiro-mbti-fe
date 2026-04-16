@@ -6,7 +6,7 @@ export default function Home() {
   const router = useRouter();
 
   return (
-    <main className="flex-1 flex flex-col items-center justify-center px-6 py-12 md:px-12 md:py-20 lg:px-16 lg:py-24 xl:py-28">
+    <main className="flex-1 flex flex-col items-center justify-center px-4 py-8 sm:px-6 sm:py-12 md:px-12 md:py-20 lg:px-16 lg:py-24 xl:py-28">
       <style>{`
         @keyframes ghostFloat {
           0%, 100% { transform: translateY(0); }
@@ -24,15 +24,15 @@ export default function Home() {
         <div className="absolute top-[60%] left-[60%] w-64 h-64 rounded-full blur-3xl" style={{ background: "rgba(107, 33, 168, 0.05)" }} />
       </div>
 
-      <div className="relative z-10 max-w-lg md:max-w-2xl lg:max-w-3xl xl:max-w-4xl w-full text-center space-y-20 md:space-y-24 lg:space-y-28">
+      <div className="relative z-10 max-w-lg md:max-w-2xl lg:max-w-3xl xl:max-w-4xl w-full text-center space-y-12 sm:space-y-16 md:space-y-24 lg:space-y-28">
         {/* Logo / Title */}
-        <div className="animate-fade-in space-y-6 md:space-y-8 lg:space-y-10">
+        <div className="animate-fade-in space-y-4 sm:space-y-6 md:space-y-8 lg:space-y-10">
           <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm lg:text-base text-white/70 backdrop-blur-md" style={{ background: "rgba(144, 70, 255, 0.08)", border: "1px solid rgba(144, 70, 255, 0.2)" }}>
             <span className="w-2 h-2 rounded-full bg-accent animate-pulse" style={{ boxShadow: "0 0 8px rgba(144, 70, 255, 0.6)" }} />
             AWS Summit Seoul 2026
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight">
             나의{" "}
             <span className="bg-gradient-to-r from-accent to-accent-secondary bg-clip-text text-transparent">
               Kiro MBTI
