@@ -20,11 +20,12 @@
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   background-image:
-    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(60, 20, 120, 0.25) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 40% at 80% 100%, rgba(30, 10, 80, 0.2) 0%, transparent 50%),
-    radial-gradient(ellipse 40% 30% at 20% 60%, rgba(20, 10, 60, 0.15) 0%, transparent 50%);
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(60, 20, 120, 0.25) 0%, rgba(60, 20, 120, 0) 60%),
+    radial-gradient(ellipse 60% 40% at 80% 100%, rgba(30, 10, 80, 0.2) 0%, rgba(30, 10, 80, 0) 50%),
+    radial-gradient(ellipse 40% 30% at 20% 60%, rgba(20, 10, 60, 0.15) 0%, rgba(20, 10, 60, 0) 50%);
+  background-attachment: fixed;
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
@@ -181,4 +182,40 @@ body {
 
 .animate-ghost-float {
   animation: ghostFloat 3s ease-in-out infinite;
+}
+
+/* Smooth scrollbar for all pages */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Ensure touch targets are large enough on mobile */
+@media (max-width: 640px) {
+  .choice-card {
+    min-height: 56px;
+  }
+}
+
+/* Better tap experience on touch devices */
+@media (hover: none) {
+  .choice-card:hover {
+    transform: none;
+    background: var(--surface);
+    border-color: var(--surface-border);
+  }
+  .choice-card:active {
+    transform: scale(0.98);
+    background: rgba(144, 70, 255, 0.08);
+    border-color: rgba(144, 70, 255, 0.25);
+  }
+}
+
+/* Large screen enhancements */
+@media (min-width: 1024px) {
+  .result-card::before {
+    background: linear-gradient(160deg, rgba(144, 70, 255, 0.5), rgba(192, 132, 252, 0.2), rgba(144, 70, 255, 0.08));
+  }
+  .progress-glow {
+    box-shadow: 0 0 20px rgba(144, 70, 255, 0.5), 0 0 6px rgba(144, 70, 255, 0.8);
+  }
 }

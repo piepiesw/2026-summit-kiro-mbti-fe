@@ -156,23 +156,23 @@ export default function QuizPage() {
   const partLabel = isProfile ? "PART 1 — 나에 대해" : "PART 2 — MBTI 검사";
 
   return (
-    <main className="flex-1 flex flex-col items-center justify-between px-6 py-8 md:px-12 md:py-12 max-w-lg md:max-w-2xl mx-auto w-full">
+    <main className="flex-1 flex flex-col items-center justify-between px-6 py-8 md:px-12 md:py-12 lg:px-16 lg:py-14 xl:py-16 max-w-lg md:max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto w-full">
       {/* Progress */}
       <div className="w-full space-y-3">
-        <div className="flex justify-between items-center text-sm text-white/40">
+        <div className="flex justify-between items-center text-sm lg:text-base text-white/40">
           <span className="font-mono">
             {globalIndex + 1} / {TOTAL}
           </span>
           <span>{Math.round(progressPercent)}%</span>
         </div>
-        <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+        <div className="w-full h-2 lg:h-3 bg-white/10 rounded-full overflow-hidden">
           <div
             className="h-full bg-gradient-to-r from-accent to-accent-secondary rounded-full progress-glow transition-all duration-500 ease-out"
             style={{ width: `${progressPercent}%` }}
           />
         </div>
         {/* Part label */}
-        <div className="text-xs text-white/30 text-center">{partLabel}</div>
+        <div className="text-xs lg:text-sm text-white/30 text-center">{partLabel}</div>
       </div>
 
       {/* Question area */}
@@ -186,26 +186,26 @@ export default function QuizPage() {
           // ===== PROFILE QUESTION =====
           <>
             <div className="text-center space-y-2 mb-8">
-              <span className="inline-block px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-mono">
+              <span className="inline-block px-3 py-1 lg:px-4 lg:py-1.5 rounded-full bg-accent/10 text-accent text-xs lg:text-sm font-mono">
                 {profileQuestions[profileIndex].statLabel}
               </span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold leading-snug">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-snug">
                 {profileQuestions[profileIndex].question}
               </h2>
             </div>
-            <div className="w-full grid gap-3">
+            <div className="w-full grid gap-3 lg:gap-4">
               {profileQuestions[profileIndex].choices.map((c, i) => (
                 <button
                   key={c.value}
                   onClick={() => handleProfileChoice(c.value)}
                   disabled={animating}
-                  className="choice-card w-full p-4 md:p-5 rounded-2xl bg-white/5 border border-white/10 text-left hover:bg-white/10 hover:border-accent/30 transition-all cursor-pointer disabled:cursor-default"
+                  className="choice-card w-full p-4 md:p-5 lg:p-6 rounded-2xl bg-white/5 border border-white/10 text-left hover:bg-white/10 hover:border-accent/30 transition-all cursor-pointer disabled:cursor-default"
                 >
-                  <div className="flex items-center gap-3">
-                    <span className="shrink-0 w-7 h-7 rounded-full bg-accent/10 text-accent flex items-center justify-center text-xs font-bold">
+                  <div className="flex items-center gap-3 lg:gap-4">
+                    <span className="shrink-0 w-7 h-7 lg:w-9 lg:h-9 rounded-full bg-accent/10 text-accent flex items-center justify-center text-xs lg:text-sm font-bold">
                       {String.fromCharCode(65 + i)}
                     </span>
-                    <span className="text-base md:text-lg leading-relaxed">{c.text}</span>
+                    <span className="text-base md:text-lg lg:text-xl leading-relaxed">{c.text}</span>
                   </div>
                 </button>
               ))}
@@ -218,24 +218,24 @@ export default function QuizPage() {
               <span className="text-sm text-accent font-mono">
                 Q{mbtiQuestions[mbtiIndex].id}
               </span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold leading-snug">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-snug">
                 {mbtiQuestions[mbtiIndex].question}
               </h2>
             </div>
-            <div className="w-full space-y-4">
+            <div className="w-full space-y-4 lg:space-y-5">
               {mbtiQuestions[mbtiIndex].choices.map((c, i) => (
                 <button
                   key={c.direction}
                   onClick={() => handleMBTIChoice(c.direction)}
                   disabled={animating}
-                  className="choice-card w-full p-5 md:p-6 rounded-2xl bg-white/5 border border-white/10 text-left hover:bg-white/10 transition-all cursor-pointer disabled:cursor-default"
+                  className="choice-card w-full p-5 md:p-6 lg:p-7 rounded-2xl bg-white/5 border border-white/10 text-left hover:bg-white/10 transition-all cursor-pointer disabled:cursor-default"
                   style={{
                     borderColor: i === 0 ? undefined : undefined,
                   }}
                 >
                   <div className="flex items-start gap-4">
                     <span
-                      className="shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center text-sm md:text-base font-bold"
+                      className="shrink-0 w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 rounded-full flex items-center justify-center text-sm md:text-base lg:text-lg font-bold"
                       style={
                         i === 0
                           ? { background: "rgba(144, 70, 255, 0.15)", color: "#9046FF" }
@@ -244,7 +244,7 @@ export default function QuizPage() {
                     >
                       {i === 0 ? "A" : "B"}
                     </span>
-                    <span className="text-lg md:text-xl leading-relaxed">{c.text}</span>
+                    <span className="text-lg md:text-xl lg:text-2xl leading-relaxed">{c.text}</span>
                   </div>
                 </button>
               ))}
@@ -258,12 +258,12 @@ export default function QuizPage() {
         <button
           onClick={handleGoBack}
           disabled={animating}
-          className="flex items-center gap-2 py-3 px-6 rounded-2xl bg-white/5 border border-white/10 text-white/50 hover:text-white/80 hover:bg-white/10 transition-all cursor-pointer disabled:cursor-default"
+          className="flex items-center gap-2 py-3 px-6 lg:py-4 lg:px-8 rounded-2xl bg-white/5 border border-white/10 text-white/50 hover:text-white/80 hover:bg-white/10 transition-all cursor-pointer disabled:cursor-default"
         >
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
-          <span className="text-sm">이전 질문</span>
+          <span className="text-sm lg:text-base">이전 질문</span>
         </button>
       )}
 

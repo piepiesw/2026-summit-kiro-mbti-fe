@@ -55,7 +55,7 @@ function ResultContent() {
   const challengeMatchResult = results[result.challengeMatch];
 
   return (
-    <main className="flex-1 flex flex-col items-center px-6 py-8 md:px-12 md:py-12 max-w-lg md:max-w-2xl mx-auto w-full">
+    <main className="flex-1 flex flex-col items-center px-6 py-8 md:px-12 md:py-12 lg:px-16 lg:py-14 xl:py-16 max-w-lg md:max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto w-full">
       <style>{`
         @keyframes ghostFloat {
           0%, 100% { transform: translateY(0); }
@@ -68,13 +68,13 @@ function ResultContent() {
       `}</style>
       {/* Result Card */}
       <div className="animate-fade-in w-full">
-        <div className="result-card bg-background p-8 md:p-12 space-y-6 md:space-y-8">
+        <div className="result-card bg-background p-8 md:p-12 lg:p-14 xl:p-16 space-y-6 md:space-y-8 lg:space-y-10">
           {/* Type badge */}
           <div className="text-center space-y-4">
-            <h2 className="text-2xl md:text-3xl font-bold" style={{ color: "#c084fc" }}>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold" style={{ color: "#c084fc" }}>
               나의 Kiro MBTI는?
             </h2>
-            <div className="relative w-72 h-72 md:w-96 md:h-96 mx-auto mt-6 md:mt-10 -mb-4 md:-mb-6">
+            <div className="relative w-72 h-72 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] xl:w-[32rem] xl:h-[32rem] mx-auto mt-6 md:mt-10 lg:mt-12 -mb-4 md:-mb-6 lg:-mb-8">
               {/* Purple glow behind character */}
               <div
                 className="absolute inset-0 w-full h-full rounded-full pointer-events-none blur-3xl"
@@ -107,7 +107,7 @@ function ResultContent() {
             </div>
             <div>
               <h1
-                className="text-3xl md:text-5xl font-bold font-mono tracking-wider"
+                className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold font-mono tracking-wider"
                 style={{
                   background: `linear-gradient(135deg, var(--accent), var(--accent-secondary))`,
                   WebkitBackgroundClip: "text",
@@ -116,39 +116,39 @@ function ResultContent() {
               >
                 {result.type}
               </h1>
-              <h2 className="text-2xl md:text-3xl font-bold mt-2">{result.title}</h2>
-              <p className="text-white/50 mt-1 md:text-lg">{result.subtitle}</p>
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mt-2">{result.title}</h2>
+              <p className="text-white/50 mt-1 md:text-lg lg:text-xl">{result.subtitle}</p>
             </div>
           </div>
 
           {/* Quote */}
           <div className="animate-fade-in-delay-1">
-            <div className="relative px-6 py-4 rounded-xl bg-white/5 border border-white/10">
-              <span className="absolute -top-3 left-4 text-2xl text-accent/40">&ldquo;</span>
-              <p className="text-white/80 text-center italic leading-relaxed md:text-lg">
+            <div className="relative px-6 py-4 lg:px-8 lg:py-5 rounded-xl bg-white/5 border border-white/10">
+              <span className="absolute -top-3 left-4 text-2xl lg:text-3xl text-accent/40">&ldquo;</span>
+              <p className="text-white/80 text-center italic leading-relaxed md:text-lg lg:text-xl">
                 {result.quote}
               </p>
-              <span className="absolute -bottom-3 right-4 text-2xl text-accent/40">&rdquo;</span>
+              <span className="absolute -bottom-3 right-4 text-2xl lg:text-3xl text-accent/40">&rdquo;</span>
             </div>
           </div>
 
           {/* Description */}
           <div className="animate-fade-in-delay-1">
-            <p className="text-white/70 leading-relaxed text-center md:text-lg">
+            <p className="text-white/70 leading-relaxed text-center md:text-lg lg:text-xl">
               {result.description}
             </p>
           </div>
 
           {/* Strengths */}
           <div className="animate-fade-in-delay-2 space-y-3">
-            <h3 className="text-sm md:text-base font-bold text-accent uppercase tracking-wider">
+            <h3 className="text-sm md:text-base lg:text-lg font-bold text-accent uppercase tracking-wider">
               Strengths
             </h3>
-            <div className="flex flex-wrap gap-2 md:gap-3">
+            <div className="flex flex-wrap gap-2 md:gap-3 lg:gap-4">
               {result.strengths.map((s) => (
                 <span
                   key={s}
-                  className="px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-accent/10 text-accent text-sm md:text-base border border-accent/20"
+                  className="px-3 py-1.5 md:px-4 md:py-2 lg:px-5 lg:py-2.5 rounded-full bg-accent/10 text-accent text-sm md:text-base lg:text-lg border border-accent/20"
                 >
                   {s}
                 </span>
@@ -159,10 +159,10 @@ function ResultContent() {
           {/* Kiro Top 3 추천 기능 */}
           {top3.length > 0 && (
             <div className="animate-fade-in-delay-3 space-y-3">
-              <h3 className="text-sm font-bold text-accent uppercase tracking-wider">
+              <h3 className="text-sm lg:text-base font-bold text-accent uppercase tracking-wider">
                 당신에게 맞는 Kiro 기능 Top 3
               </h3>
-              <div className="space-y-2">
+              <div className="space-y-2 lg:space-y-3">
                 {top3.map((feature, i) => (
                   <div key={feature.id}>
                     <button
@@ -171,13 +171,13 @@ function ResultContent() {
                           expandedFeature === feature.id ? null : feature.id
                         )
                       }
-                      className="w-full flex items-center gap-4 p-4 rounded-xl bg-gradient-to-br from-accent/5 to-accent-secondary/5 border border-white/10 hover:border-accent/30 transition-all cursor-pointer"
+                      className="w-full flex items-center gap-4 p-4 lg:p-5 rounded-xl bg-gradient-to-br from-accent/5 to-accent-secondary/5 border border-white/10 hover:border-accent/30 transition-all cursor-pointer"
                     >
                       <span className="text-xs font-mono text-accent/60 font-bold">
                         #{i + 1}
                       </span>
                       <span className="text-xl">{feature.emoji}</span>
-                      <span className="font-bold text-white text-lg flex-1 text-left">
+                      <span className="font-bold text-white text-lg lg:text-xl flex-1 text-left">
                         {feature.name}
                       </span>
                       <svg
@@ -200,7 +200,7 @@ function ResultContent() {
                     </button>
                     {expandedFeature === feature.id && (
                       <div className="mx-4 mt-1 px-4 py-3 rounded-b-xl bg-white/5 border border-t-0 border-white/10">
-                        <p className="text-sm text-white/60 leading-relaxed">
+                        <p className="text-sm lg:text-base text-white/60 leading-relaxed">
                           {feature.description}
                         </p>
                       </div>
@@ -216,47 +216,47 @@ function ResultContent() {
 
           {/* 궁합 */}
           <div className="animate-fade-in-delay-4 space-y-3">
-            <h3 className="text-sm font-bold text-accent uppercase tracking-wider">
+            <h3 className="text-sm lg:text-base font-bold text-accent uppercase tracking-wider">
               궁합
             </h3>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 lg:gap-4">
               {/* Best Match */}
-              <div className="p-4 rounded-xl bg-accent/5 border border-accent/20 space-y-2">
-                <div className="text-xs text-accent font-bold">찰떡 궁합</div>
-                <div className="flex items-center gap-2">
-                  <span className="text-2xl">{bestMatchResult?.emoji}</span>
+              <div className="p-4 lg:p-5 rounded-xl bg-accent/5 border border-accent/20 space-y-2 lg:space-y-3">
+                <div className="text-xs lg:text-sm text-accent font-bold">찰떡 궁합</div>
+                <div className="flex items-center gap-2 lg:gap-3">
+                  <span className="text-2xl lg:text-3xl">{bestMatchResult?.emoji}</span>
                   <div>
-                    <div className="font-bold font-mono text-accent">
+                    <div className="font-bold font-mono text-accent lg:text-lg">
                       {result.bestMatch}
                     </div>
-                    <div className="text-xs text-white/50">
+                    <div className="text-xs lg:text-sm text-white/50">
                       {bestMatchResult?.title}
                     </div>
                   </div>
                 </div>
-                <p className="text-xs text-white/50 leading-relaxed">
+                <p className="text-xs lg:text-sm text-white/50 leading-relaxed">
                   {result.bestMatchComment}
                 </p>
               </div>
               {/* Challenge Match */}
-              <div className="p-4 rounded-xl bg-accent-secondary/5 border border-accent-secondary/20 space-y-2">
-                <div className="text-xs text-accent-secondary font-bold">
+              <div className="p-4 lg:p-5 rounded-xl bg-accent-secondary/5 border border-accent-secondary/20 space-y-2 lg:space-y-3">
+                <div className="text-xs lg:text-sm text-accent-secondary font-bold">
                   ⚠️ 안 맞는 조합
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-2xl">
+                <div className="flex items-center gap-2 lg:gap-3">
+                  <span className="text-2xl lg:text-3xl">
                     {challengeMatchResult?.emoji}
                   </span>
                   <div>
-                    <div className="font-bold font-mono text-accent-secondary">
+                    <div className="font-bold font-mono text-accent-secondary lg:text-lg">
                       {result.challengeMatch}
                     </div>
-                    <div className="text-xs text-white/50">
+                    <div className="text-xs lg:text-sm text-white/50">
                       {challengeMatchResult?.title}
                     </div>
                   </div>
                 </div>
-                <p className="text-xs text-white/50 leading-relaxed">
+                <p className="text-xs lg:text-sm text-white/50 leading-relaxed">
                   {result.challengeMatchComment}
                 </p>
               </div>
@@ -266,11 +266,11 @@ function ResultContent() {
           {/* QR Code */}
           {currentUrl && (
             <div className="animate-fade-in-delay-4 flex flex-col items-center space-y-2 pt-2">
-              <h3 className="text-sm font-bold text-accent uppercase tracking-wider">
+              <h3 className="text-sm lg:text-base font-bold text-accent uppercase tracking-wider">
                 QR로 결과 가져가기
               </h3>
-              <div className="p-3 bg-white rounded-xl">
-                <QRCodeSVG value={currentUrl} size={120} />
+              <div className="p-3 lg:p-4 bg-white rounded-xl">
+                <QRCodeSVG value={currentUrl} size={120} className="lg:!w-[160px] lg:!h-[160px]" />
               </div>
               <p className="text-xs text-white/30">
                 카메라로 스캔하면 이 결과를 바로 볼 수 있어요
@@ -281,10 +281,10 @@ function ResultContent() {
       </div>
 
       {/* Actions */}
-      <div className="animate-fade-in-delay-4 w-full space-y-3 mt-8">
+      <div className="animate-fade-in-delay-4 w-full max-w-md lg:max-w-lg mx-auto space-y-3 lg:space-y-4 mt-8 lg:mt-10">
         <button
           onClick={handleShare}
-          className="group relative w-full py-4 px-8 rounded-2xl font-bold text-lg cursor-pointer overflow-hidden transition-all hover:scale-[1.02] active:scale-[0.98]"
+          className="group relative w-full py-4 px-8 lg:py-5 lg:px-10 rounded-2xl font-bold text-lg lg:text-xl cursor-pointer overflow-hidden transition-all hover:scale-[1.02] active:scale-[0.98]"
           style={{
             background: "linear-gradient(135deg, #9046FF 0%, #b060ff 50%, #c084fc 100%)",
             color: "#fff",
@@ -296,7 +296,7 @@ function ResultContent() {
         </button>
         <button
           onClick={handleRetry}
-          className="w-full py-4 px-8 rounded-2xl font-medium cursor-pointer transition-all hover:scale-[1.02] active:scale-[0.98] backdrop-blur-md"
+          className="w-full py-4 px-8 lg:py-5 lg:px-10 rounded-2xl font-medium lg:text-lg cursor-pointer transition-all hover:scale-[1.02] active:scale-[0.98] backdrop-blur-md"
           style={{
             background: "rgba(144, 70, 255, 0.06)",
             border: "1px solid rgba(144, 70, 255, 0.2)",

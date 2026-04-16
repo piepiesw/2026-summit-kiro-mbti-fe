@@ -27,12 +27,12 @@ function StatCard({
   sub?: string;
 }) {
   return (
-    <div className="p-5 rounded-2xl bg-white/5 border border-white/10">
-      <p className="text-sm text-white/40">{label}</p>
-      <p className="text-3xl font-bold mt-1 bg-gradient-to-r from-accent to-accent-secondary bg-clip-text text-transparent">
+    <div className="p-5 lg:p-6 rounded-2xl bg-white/5 border border-white/10">
+      <p className="text-sm lg:text-base text-white/40">{label}</p>
+      <p className="text-3xl lg:text-4xl font-bold mt-1 bg-gradient-to-r from-accent to-accent-secondary bg-clip-text text-transparent">
         {value}
       </p>
-      {sub && <p className="text-xs text-white/30 mt-1">{sub}</p>}
+      {sub && <p className="text-xs lg:text-sm text-white/30 mt-1">{sub}</p>}
     </div>
   );
 }
@@ -48,7 +48,7 @@ function AxisBar({
 }) {
   return (
     <div className="space-y-1">
-      <div className="flex justify-between text-sm">
+      <div className="flex justify-between text-sm lg:text-base">
         <span className="text-accent font-bold">
           {left} {leftPct}%
         </span>
@@ -56,7 +56,7 @@ function AxisBar({
           {100 - leftPct}% {right}
         </span>
       </div>
-      <div className="h-3 rounded-full bg-white/10 overflow-hidden flex">
+      <div className="h-3 lg:h-4 rounded-full bg-white/10 overflow-hidden flex">
         <div
           className="h-full bg-accent rounded-l-full transition-all"
           style={{ width: `${leftPct}%` }}
@@ -72,7 +72,7 @@ function AxisBar({
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="text-lg font-bold text-white/80 mb-4 flex items-center gap-2">
+    <h2 className="text-lg lg:text-xl font-bold text-white/80 mb-4 lg:mb-5 flex items-center gap-2">
       {children}
     </h2>
   );
@@ -109,22 +109,22 @@ export default function DashboardPage() {
   );
 
   return (
-    <main className="min-h-screen bg-background text-foreground px-4 py-8 max-w-6xl mx-auto">
+    <main className="min-h-screen bg-background text-foreground px-4 py-8 md:px-6 lg:px-8 xl:px-12 max-w-6xl xl:max-w-7xl mx-auto">
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-2">
-          <h1 className="text-2xl font-bold">Kiro MBTI Dashboard</h1>
+          <h1 className="text-2xl lg:text-3xl xl:text-4xl font-bold">Kiro MBTI Dashboard</h1>
           <span className="px-2 py-0.5 rounded bg-accent/20 text-accent text-xs font-mono">
             SAMPLE
           </span>
         </div>
-        <p className="text-sm text-white/40">
+        <p className="text-sm lg:text-base text-white/40">
           AWS Summit Seoul 2026 · Kiro Booth 실시간 통계
         </p>
       </div>
 
       {/* KPI Cards */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6 mb-8 lg:mb-10">
         <StatCard label="총 참여자" value={s.totalResponses} sub="명" />
         <StatCard
           label="1위 유형"
@@ -144,11 +144,11 @@ export default function DashboardPage() {
       </div>
 
       {/* Row 1: MBTI Distribution + Axis */}
-      <div className="grid md:grid-cols-3 gap-6 mb-8">
+      <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-8 lg:mb-10">
         {/* MBTI 유형 분포 */}
-        <div className="md:col-span-2 p-5 rounded-2xl bg-white/5 border border-white/10">
+        <div className="md:col-span-2 p-5 lg:p-6 rounded-2xl bg-white/5 border border-white/10">
           <SectionTitle>MBTI 유형 분포</SectionTitle>
-          <ResponsiveContainer width="100%" height={260}>
+          <ResponsiveContainer width="100%" height={300}>
             <BarChart data={s.typeDistribution}>
               <XAxis
                 dataKey="type"
@@ -171,7 +171,7 @@ export default function DashboardPage() {
         </div>
 
         {/* 축별 비율 */}
-        <div className="p-5 rounded-2xl bg-white/5 border border-white/10">
+        <div className="p-5 lg:p-6 rounded-2xl bg-white/5 border border-white/10">
           <SectionTitle>축별 비율</SectionTitle>
           <div className="space-y-5">
             <AxisBar
@@ -199,7 +199,7 @@ export default function DashboardPage() {
       </div>
 
       {/* Row 2: Profile Stats (4 pie charts) */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6 mb-8 lg:mb-10">
         {[
           { title: "직업군", data: s.roleDistribution },
           { title: "AI 사용 빈도", data: s.aiFrequency },
@@ -208,12 +208,12 @@ export default function DashboardPage() {
         ].map((chart) => (
           <div
             key={chart.title}
-            className="p-4 rounded-2xl bg-white/5 border border-white/10"
+            className="p-4 lg:p-5 rounded-2xl bg-white/5 border border-white/10"
           >
             <h3 className="text-sm font-bold text-white/60 mb-2">
               {chart.title}
             </h3>
-            <ResponsiveContainer width="100%" height={140}>
+            <ResponsiveContainer width="100%" height={160}>
               <PieChart>
                 <Pie
                   data={chart.data}
@@ -262,9 +262,9 @@ export default function DashboardPage() {
       </div>
 
       {/* Row 3: Kiro Features + Hourly */}
-      <div className="grid md:grid-cols-2 gap-6 mb-8">
+      <div className="grid md:grid-cols-2 gap-6 lg:gap-8 mb-8 lg:mb-10">
         {/* Kiro 추천 기능 분포 */}
-        <div className="p-5 rounded-2xl bg-white/5 border border-white/10">
+        <div className="p-5 lg:p-6 rounded-2xl bg-white/5 border border-white/10">
           <SectionTitle>Kiro 추천 기능 등장 빈도</SectionTitle>
           <div className="space-y-3">
             {s.kiroFeatureHits.map((f, i) => {
@@ -306,9 +306,9 @@ export default function DashboardPage() {
         </div>
 
         {/* 시간대별 참여 */}
-        <div className="p-5 rounded-2xl bg-white/5 border border-white/10">
+        <div className="p-5 lg:p-6 rounded-2xl bg-white/5 border border-white/10">
           <SectionTitle>시간대별 참여 추이</SectionTitle>
-          <ResponsiveContainer width="100%" height={240}>
+          <ResponsiveContainer width="100%" height={280}>
             <AreaChart data={s.hourlyParticipation}>
               <defs>
                 <linearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
