@@ -203,7 +203,7 @@ export default function DashboardPage() {
         {[
           { title: "직업군", data: s.roleDistribution },
           { title: "AI 사용 빈도", data: s.aiFrequency },
-          { title: "AI 사용 스타일", data: s.aiStyle },
+          { title: "AI 주요 활용처", data: s.aiStyle },
           { title: "AI 기대 기능", data: s.aiExpectation },
         ].map((chart) => (
           <div

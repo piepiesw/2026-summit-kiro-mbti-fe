@@ -53,11 +53,14 @@ export const sampleStats = {
     { name: "거의 안 씀", value: 47, color: "#ff6b8a" },
   ],
 
-  // AI 사용 스타일
+  // AI 주요 활용처
   aiStyle: [
-    { name: "위임형 (Autonomous)", value: 98, color: "#00d4aa" },
-    { name: "협업형 (Interactive)", value: 152, color: "#7c5cfc" },
-    { name: "참고형 (Manual)", value: 97, color: "#ffa94d" },
+    { name: "문서 작성", value: 82, color: "#00d4aa" },
+    { name: "검색/요약", value: 74, color: "#7c5cfc" },
+    { name: "코드 작성", value: 68, color: "#ff6b8a" },
+    { name: "브레인스토밍", value: 55, color: "#ffa94d" },
+    { name: "번역/외국어", value: 42, color: "#4dabf7" },
+    { name: "아직 안 써봤다", value: 26, color: "#69db7c" },
   ],
 
   // AI 기대 기능

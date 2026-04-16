@@ -64,9 +64,12 @@ const mbtiWeights: Record<AxisDirection, Record<string, number>> = {
 
 // Profile answer weights
 const profileStyleWeights: Record<string, Record<string, number>> = {
-  autonomous: { agent: 2 },
-  interactive: { specs: 2 },
-  manual: { hooks: 2 },
+  writing: { specs: 2 },
+  search: { steering: 2 },
+  coding: { agent: 2 },
+  brainstorming: { vibe: 2 },
+  translation: { powers: 2 },
+  none: {},
 };
 
 const profileExpectationWeights: Record<string, Record<string, number>> = {
