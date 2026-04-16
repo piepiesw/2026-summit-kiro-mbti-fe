@@ -3,7 +3,7 @@
 import { Suspense, useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { results } from "@/data/results";
-import { computeTop3, type KiroFeature } from "@/data/kiroFeatures";
+import { computeTop3, computeTop3FromType, kiroFeatures, type KiroFeature } from "@/data/kiroFeatures";
 import { QRCodeSVG } from "qrcode.react";
 import Image from "next/image";
 
@@ -19,36 +19,39 @@ function ResultContent() {
 
   useEffect(() => {
     setCurrentUrl(window.location.href);
+
+    // 1) URL에 기능 ID가 있으면 그대로 사용 (QR/공유 링크)
+    const featureParam = searchParams.get("f");
+    if (featureParam) {
+      const features = featureParam
+        .split(",")
+        .map((id) => kiroFeatures[id])
+        .filter(Boolean);
+      if (features.length > 0) {
+        setTop3(features);
+        return;
+      }
+    }
+
+    // 2) sessionStorage (같은 기기에서 퀴즈 직접 푼 경우)
     try {
       const saved = sessionStorage.getItem("kiro-mbti-result");
       if (saved) {
         const data = JSON.parse(saved);
         const features = computeTop3(data.mbtiScores, data.profile);
         setTop3(features);
+        return;
       }
     } catch {
-      // fallback: no profile data
+      // fallback below
     }
-  }, []);
+
+    // 3) MBTI 타입만으로 계산
+    setTop3(computeTop3FromType(type));
+  }, [type, searchParams]);
 
   const handleRetry = () => {
     router.push("/");
-  };
-
-  const handleShare = async () => {
-    const featureNames = top3.map((f) => `${f.emoji} ${f.name}`).join(", ");
-    const shareText = `나의 Kiro MBTI는 ${result.type} "${result.title}"! ${result.emoji}\n\n추천 Kiro 기능: ${featureNames}\n\nAI 시대, 당신은 어떤 타입?\n`;
-    if (navigator.share) {
-      try {
-        await navigator.share({ title: "Kiro MBTI", text: shareText });
-      } catch {
-        await navigator.clipboard.writeText(shareText);
-        alert("결과가 복사되었습니다!");
-      }
-    } else {
-      await navigator.clipboard.writeText(shareText);
-      alert("결과가 복사되었습니다!");
-    }
   };
 
   const bestMatchResult = results[result.bestMatch];
@@ -140,15 +143,15 @@ function ResultContent() {
           </div>
 
           {/* Strengths */}
-          <div className="animate-fade-in-delay-2 space-y-3">
-            <h3 className="text-sm md:text-base lg:text-lg font-bold text-accent uppercase tracking-wider">
+          <div className="animate-fade-in-delay-2 space-y-4 pt-4 lg:pt-6">
+            <h3 className="text-base md:text-lg lg:text-xl font-bold text-accent uppercase tracking-wider">
               Strengths
             </h3>
-            <div className="flex flex-wrap gap-2 md:gap-3 lg:gap-4">
+            <div className="flex flex-wrap gap-3 md:gap-4">
               {result.strengths.map((s) => (
                 <span
                   key={s}
-                  className="px-3 py-1.5 md:px-4 md:py-2 lg:px-5 lg:py-2.5 rounded-full bg-accent/10 text-accent text-sm md:text-base lg:text-lg border border-accent/20"
+                  className="px-5 py-2 md:px-6 md:py-2.5 lg:px-7 lg:py-3 rounded-full bg-accent/10 text-accent text-base md:text-lg lg:text-xl font-medium border border-accent/20"
                 >
                   {s}
                 </span>
@@ -158,8 +161,8 @@ function ResultContent() {
 
           {/* Kiro Top 3 추천 기능 */}
           {top3.length > 0 && (
-            <div className="animate-fade-in-delay-3 space-y-3">
-              <h3 className="text-sm lg:text-base font-bold text-accent uppercase tracking-wider">
+            <div className="animate-fade-in-delay-3 space-y-3 pt-4 lg:pt-6">
+              <h3 className="text-base md:text-lg lg:text-xl font-bold text-accent uppercase tracking-wider">
                 당신에게 맞는 Kiro 기능 Top 3
               </h3>
               <div className="space-y-2 lg:space-y-3">
@@ -208,55 +211,57 @@ function ResultContent() {
                   </div>
                 ))}
               </div>
-              <p className="text-sm text-accent text-center pt-2">
-                StoryLane 부스에서 이 기능들을 직접 체험해보세요!
-              </p>
+              <div className="mt-4 p-4 lg:p-5 rounded-xl bg-gradient-to-r from-accent/10 to-accent-secondary/10 border border-accent/30 text-center">
+                <p className="text-base lg:text-lg font-bold text-white">
+                  StoryLane 부스에서 이 기능들을 직접 체험해보세요!
+                </p>
+              </div>
             </div>
           )}
 
           {/* 궁합 */}
-          <div className="animate-fade-in-delay-4 space-y-3">
-            <h3 className="text-sm lg:text-base font-bold text-accent uppercase tracking-wider">
+          <div className="animate-fade-in-delay-4 space-y-4 pt-4 lg:pt-6">
+            <h3 className="text-base md:text-lg lg:text-xl font-bold text-accent uppercase tracking-wider">
               궁합
             </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 lg:gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-5">
               {/* Best Match */}
-              <div className="p-4 lg:p-5 rounded-xl bg-accent/5 border border-accent/20 space-y-2 lg:space-y-3">
-                <div className="text-xs lg:text-sm text-accent font-bold">찰떡 궁합</div>
-                <div className="flex items-center gap-2 lg:gap-3">
-                  <span className="text-2xl lg:text-3xl">{bestMatchResult?.emoji}</span>
+              <div className="p-5 lg:p-6 rounded-2xl bg-accent/5 border border-accent/20 space-y-4">
+                <div className="text-sm lg:text-base text-accent font-bold">잘 맞는 조합</div>
+                <div className="flex items-center gap-4 lg:gap-5">
+                  <span className="text-3xl lg:text-4xl">{bestMatchResult?.emoji}</span>
                   <div>
-                    <div className="font-bold font-mono text-accent lg:text-lg">
+                    <div className="text-lg lg:text-xl font-bold font-mono text-accent">
                       {result.bestMatch}
                     </div>
-                    <div className="text-xs lg:text-sm text-white/50">
+                    <div className="text-sm lg:text-base text-white/60">
                       {bestMatchResult?.title}
                     </div>
                   </div>
                 </div>
-                <p className="text-xs lg:text-sm text-white/50 leading-relaxed">
+                <p className="text-sm lg:text-base text-white/50 leading-relaxed">
                   {result.bestMatchComment}
                 </p>
               </div>
               {/* Challenge Match */}
-              <div className="p-4 lg:p-5 rounded-xl bg-accent-secondary/5 border border-accent-secondary/20 space-y-2 lg:space-y-3">
-                <div className="text-xs lg:text-sm text-accent-secondary font-bold">
-                  ⚠️ 안 맞는 조합
+              <div className="p-5 lg:p-6 rounded-2xl bg-accent-secondary/5 border border-accent-secondary/20 space-y-4">
+                <div className="text-sm lg:text-base text-accent-secondary font-bold">
+                  안 맞는 조합
                 </div>
-                <div className="flex items-center gap-2 lg:gap-3">
-                  <span className="text-2xl lg:text-3xl">
+                <div className="flex items-center gap-4 lg:gap-5">
+                  <span className="text-3xl lg:text-4xl">
                     {challengeMatchResult?.emoji}
                   </span>
                   <div>
-                    <div className="font-bold font-mono text-accent-secondary lg:text-lg">
+                    <div className="text-lg lg:text-xl font-bold font-mono text-accent-secondary">
                       {result.challengeMatch}
                     </div>
-                    <div className="text-xs lg:text-sm text-white/50">
+                    <div className="text-sm lg:text-base text-white/60">
                       {challengeMatchResult?.title}
                     </div>
                   </div>
                 </div>
-                <p className="text-xs lg:text-sm text-white/50 leading-relaxed">
+                <p className="text-sm lg:text-base text-white/50 leading-relaxed">
                   {result.challengeMatchComment}
                 </p>
               </div>
@@ -265,8 +270,8 @@ function ResultContent() {
 
           {/* QR Code */}
           {currentUrl && (
-            <div className="animate-fade-in-delay-4 flex flex-col items-center space-y-2 pt-2">
-              <h3 className="text-sm lg:text-base font-bold text-accent uppercase tracking-wider">
+            <div className="animate-fade-in-delay-4 flex flex-col items-center space-y-2 pt-6 lg:pt-8">
+              <h3 className="text-base md:text-lg lg:text-xl font-bold text-accent uppercase tracking-wider">
                 QR로 결과 가져가기
               </h3>
               <div className="p-3 lg:p-4 bg-white rounded-xl">
@@ -281,19 +286,7 @@ function ResultContent() {
       </div>
 
       {/* Actions */}
-      <div className="animate-fade-in-delay-4 w-full max-w-md lg:max-w-lg mx-auto space-y-3 lg:space-y-4 mt-8 lg:mt-10">
-        <button
-          onClick={handleShare}
-          className="group relative w-full py-4 px-8 lg:py-5 lg:px-10 rounded-2xl font-bold text-lg lg:text-xl cursor-pointer overflow-hidden transition-all hover:scale-[1.02] active:scale-[0.98]"
-          style={{
-            background: "linear-gradient(135deg, #9046FF 0%, #b060ff 50%, #c084fc 100%)",
-            color: "#fff",
-            boxShadow: "0 4px 24px rgba(144, 70, 255, 0.35), inset 0 1px 0 rgba(255,255,255,0.15)",
-          }}
-        >
-          <span className="relative z-10">결과 공유하기</span>
-          <div className="absolute inset-0 bg-gradient-to-t from-transparent to-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
-        </button>
+      <div className="animate-fade-in-delay-4 w-full max-w-md lg:max-w-lg mx-auto mt-8 lg:mt-10">
         <button
           onClick={handleRetry}
           className="w-full py-4 px-8 lg:py-5 lg:px-10 rounded-2xl font-medium lg:text-lg cursor-pointer transition-all hover:scale-[1.02] active:scale-[0.98] backdrop-blur-md"

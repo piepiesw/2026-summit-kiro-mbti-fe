@@ -136,3 +136,13 @@ export function computeTop3(
 
   return sorted;
 }
+
+export function computeTop3FromType(type: string): KiroFeature[] {
+  const scores: Record<string, number> = {
+    E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0,
+  };
+  for (const letter of type) {
+    scores[letter] = 1;
+  }
+  return computeTop3(scores, {});
+}

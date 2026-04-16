@@ -7,6 +7,7 @@ import {
   mbtiQuestions,
   type AxisDirection,
 } from "@/data/questions";
+import { computeTop3 } from "@/data/kiroFeatures";
 
 type Phase = "profile" | "mbti";
 
@@ -83,47 +84,55 @@ export default function QuizPage() {
       const newAnswers = [...mbtiAnswers, dir];
       setMbtiAnswers(newAnswers);
 
-      transition(() => {
-        if (mbtiIndex + 1 >= mbtiQuestions.length) {
-          const scores = computeScores(newAnswers);
-          const type = [
-            scores.E >= scores.I ? "E" : "I",
-            scores.S >= scores.N ? "S" : "N",
-            scores.T >= scores.F ? "T" : "F",
-            scores.J >= scores.P ? "J" : "P",
-          ].join("");
+      const isLast = mbtiIndex + 1 >= mbtiQuestions.length;
 
-          // Save to sessionStorage (for result page)
-          const localPayload = {
-            profile: { ...profileAnswers },
-            mbtiAnswers: newAnswers,
-            mbtiScores: scores,
-            type,
-          };
-          sessionStorage.setItem("kiro-mbti-result", JSON.stringify(localPayload));
+      if (isLast) {
+        // 마지막 문항: slide-out만 하고 바로 라우팅 (다음 질문 깜빡임 방지)
+        setAnimating(true);
+        setSlideDir("out");
 
-          // Submit to API (flat structure)
-          const apiPayload: Record<string, string> = {
-            mbti_type: type,
-            role: profileAnswers.role,
-            ai_frequency: profileAnswers.ai_frequency,
-            ai_style: profileAnswers.ai_style,
-            ai_expectation: profileAnswers.ai_expectation,
-          };
-          newAnswers.forEach((dir, i) => {
-            apiPayload[`q${i + 1}`] = dir;
-          });
-          fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/results`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(apiPayload),
-          }).catch(() => {});
+        const scores = computeScores(newAnswers);
+        const type = [
+          scores.E >= scores.I ? "E" : "I",
+          scores.S >= scores.N ? "S" : "N",
+          scores.T >= scores.F ? "T" : "F",
+          scores.J >= scores.P ? "J" : "P",
+        ].join("");
 
-          router.push(`/result?type=${type}`);
-        } else {
+        sessionStorage.setItem("kiro-mbti-result", JSON.stringify({
+          profile: { ...profileAnswers },
+          mbtiAnswers: newAnswers,
+          mbtiScores: scores,
+          type,
+        }));
+
+        const apiPayload: Record<string, string> = {
+          mbti_type: type,
+          role: profileAnswers.role,
+          ai_frequency: profileAnswers.ai_frequency,
+          ai_style: profileAnswers.ai_style,
+          ai_expectation: profileAnswers.ai_expectation,
+        };
+        newAnswers.forEach((dir, i) => {
+          apiPayload[`q${i + 1}`] = dir;
+        });
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/results`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(apiPayload),
+        }).catch(() => {});
+
+        const top3 = computeTop3(scores, profileAnswers);
+        const featureIds = top3.map((f) => f.id).join(",");
+
+        setTimeout(() => {
+          router.push(`/result?type=${type}&f=${featureIds}`);
+        }, 300);
+      } else {
+        transition(() => {
           setMbtiIndex(mbtiIndex + 1);
-        }
-      });
+        });
+      }
     },
     [animating, mbtiAnswers, mbtiIndex, profileAnswers, router, transition]
   );
@@ -268,7 +277,7 @@ export default function QuizPage() {
       )}
 
       {/* Footer */}
-      <div className="text-xs text-white/20 pt-4">Kiro Developer MBTI</div>
+      <div className="text-xs text-white/20 pt-4">Kiro MBTI</div>
     </main>
   );
 }
