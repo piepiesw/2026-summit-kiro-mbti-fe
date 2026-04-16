@@ -223,11 +223,11 @@ export default function QuizPage() {
         ) : (
           // ===== MBTI QUESTION =====
           <>
-            <div className="text-center space-y-2 mb-10">
-              <span className="text-sm text-accent font-mono">
+            <div className="text-center space-y-3 mb-10">
+              <span className="text-base md:text-lg text-accent font-mono font-bold">
                 Q{mbtiQuestions[mbtiIndex].id}
               </span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-snug">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-snug break-keep">
                 {mbtiQuestions[mbtiIndex].question}
               </h2>
             </div>
@@ -242,7 +242,7 @@ export default function QuizPage() {
                     borderColor: i === 0 ? undefined : undefined,
                   }}
                 >
-                  <div className="flex items-start gap-4">
+                  <div className="flex items-center gap-4">
                     <span
                       className="shrink-0 w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 rounded-full flex items-center justify-center text-sm md:text-base lg:text-lg font-bold"
                       style={
