@@ -24,6 +24,7 @@ export const profileQuestions: ProfileQuestion[] = [
       { text: "데이터 분석가", value: "data" },
       { text: "마케터/비즈니스/세일즈", value: "business" },
       { text: "학생/취준생", value: "student" },
+      { text: "기타", value: "other" },
     ],
   },
   {

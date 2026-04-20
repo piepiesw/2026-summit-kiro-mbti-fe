@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kiro MBTI
+
+AWS Summit 2026 이벤트용 Kiro MBTI 진단 웹앱입니다.
+프로필 질문 4개 + MBTI 질문 12개 → 16가지 유형별 결과와 Kiro 추천 기능 Top 3를 제공합니다.
+
+## Tech Stack
+
+- **Next.js 16** (App Router, static export)
+- **React 19** / **TypeScript 5**
+- **Tailwind CSS 4**
+- **Recharts** (대시보드 차트)
+- **qrcode.react** (결과 공유용 QR)
+- 배포: **S3 + CloudFront** (`out/` 정적 빌드)
+- 백엔드: API Gateway + Lambda + RDS MySQL (별도 레포)
+
+## Project Structure
+
+```
+src/
+  app/
+    page.tsx          홈/인트로
+    quiz/page.tsx     프로필 + MBTI 질문 플로우
+    result/           결과 페이지 (유형별 설명 + 추천 기능)
+    dashboard/        실시간 참여 통계 대시보드
+  components/         NightSky, GhostBurst, HomeButton
+  data/
+    questions.ts      프로필(4) + MBTI(12) 질문 정의
+    results.ts        16가지 MBTI 유형별 결과 카피
+    kiroFeatures.ts   Kiro 기능 정의 + Top 3 스코어링 로직
+    sampleStats.ts    대시보드 샘플 데이터
+API_SPEC.md           백엔드 API/DB 명세서
+```
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[http://localhost:3000](http://localhost:3000)에서 확인할 수 있습니다.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 환경 변수
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+`.env.local`:
 
-## Learn More
+```
+NEXT_PUBLIC_API_URL=https://<api-gateway-domain>
+```
 
-To learn more about Next.js, take a look at the following resources:
+퀴즈 완료 시 `${NEXT_PUBLIC_API_URL}/api/results`로 결과를 POST 합니다.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Build & Deploy
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run build
+```
 
-## Deploy on Vercel
+- `out/` 디렉토리에 정적 파일이 생성됩니다 (Next.js static export)
+- `cf-distribution.json`, `cf-function.js`로 CloudFront 설정을 관리합니다
+- S3 버킷에 `out/` 내용을 업로드 → CloudFront 무효화
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## API
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+`POST /api/results`로 퀴즈 결과 저장. 상세 스펙은 [API_SPEC.md](./API_SPEC.md) 참고.
