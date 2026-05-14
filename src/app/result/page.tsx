@@ -179,7 +179,15 @@ function ResultContent() {
                       <span className="text-xs font-mono text-accent/60 font-bold">
                         #{i + 1}
                       </span>
-                      <span className="text-xl">{feature.emoji}</span>
+                      <span className="relative shrink-0 w-9 h-9 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-lg overflow-hidden">
+                        <Image
+                          src={feature.icon}
+                          alt={feature.name}
+                          fill
+                          sizes="48px"
+                          className="object-contain"
+                        />
+                      </span>
                       <span className="font-bold text-white text-base sm:text-lg lg:text-xl flex-1 text-left">
                         {feature.name}
                       </span>
@@ -229,7 +237,19 @@ function ResultContent() {
               <div className="p-4 sm:p-5 lg:p-6 rounded-xl sm:rounded-2xl bg-accent/5 border border-accent/20 space-y-3 sm:space-y-4">
                 <div className="text-sm lg:text-base text-accent font-bold">잘 맞는 조합</div>
                 <div className="flex items-center gap-4 lg:gap-5">
-                  <span className="text-3xl lg:text-4xl">{bestMatchResult?.emoji}</span>
+                  <div className="relative shrink-0 w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24">
+                    <Image
+                      src={`/kiro_characters/${result.bestMatch}.png`}
+                      alt={`${result.bestMatch} Kiro character`}
+                      fill
+                      sizes="96px"
+                      className="object-contain"
+                      style={{
+                        filter:
+                          "drop-shadow(0 0 6px rgba(124, 92, 252, 0.55)) drop-shadow(0 0 18px rgba(124, 92, 252, 0.3))",
+                      }}
+                    />
+                  </div>
                   <div>
                     <div className="text-lg lg:text-xl font-bold font-mono text-accent">
                       {result.bestMatch}
@@ -249,9 +269,19 @@ function ResultContent() {
                   안 맞는 조합
                 </div>
                 <div className="flex items-center gap-4 lg:gap-5">
-                  <span className="text-3xl lg:text-4xl">
-                    {challengeMatchResult?.emoji}
-                  </span>
+                  <div className="relative shrink-0 w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24">
+                    <Image
+                      src={`/kiro_characters/${result.challengeMatch}.png`}
+                      alt={`${result.challengeMatch} Kiro character`}
+                      fill
+                      sizes="96px"
+                      className="object-contain"
+                      style={{
+                        filter:
+                          "drop-shadow(0 0 6px rgba(192, 132, 252, 0.5)) drop-shadow(0 0 18px rgba(192, 132, 252, 0.25))",
+                      }}
+                    />
+                  </div>
                   <div>
                     <div className="text-lg lg:text-xl font-bold font-mono text-accent-secondary">
                       {result.challengeMatch}

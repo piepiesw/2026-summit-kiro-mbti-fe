@@ -75,7 +75,7 @@ export const sampleStats = {
   kiroFeatureHits: [
     { name: "Specs", count: 198, emoji: "📐" },
     { name: "Vibe Coding", count: 176, emoji: "🎨" },
-    { name: "Autonomous Agent", count: 165, emoji: "🤖" },
+    { name: "Kiro Web (Autonomous)", count: 165, emoji: "🤖" },
     { name: "Hooks", count: 142, emoji: "🔄" },
     { name: "Steering", count: 128, emoji: "📏" },
     { name: "Powers", count: 112, emoji: "⚡" },

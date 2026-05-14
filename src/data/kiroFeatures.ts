@@ -3,6 +3,7 @@ import type { AxisDirection } from "./questions";
 export interface KiroFeature {
   id: string;
   emoji: string;
+  icon: string;
   name: string;
   description: string;
 }
@@ -11,36 +12,42 @@ export const kiroFeatures: Record<string, KiroFeature> = {
   steering: {
     id: "steering",
     emoji: "📏",
+    icon: "/kiro_functions/hero-img-15.png",
     name: "Steering",
     description: "프로젝트의 기술 스택, 코딩 컨벤션, 아키텍처 규칙을 마크다운 파일로 정의하면, AI가 모든 대화에서 자동으로 따릅니다. 매번 같은 맥락을 설명할 필요 없이 팀 전체가 일관된 코드를 생성할 수 있어요.",
   },
   powers: {
     id: "powers",
     emoji: "⚡",
+    icon: "/kiro_functions/hero-img-2.png",
     name: "Powers",
     description: "Stripe, Supabase, Figma 등 외부 도구를 MCP 프로토콜로 연결하고, 필요한 순간에만 동적으로 로딩합니다. 컨텍스트 윈도우를 약 40% 절약하면서도 AI가 정확한 도구를 알아서 골라 씁니다.",
   },
   agent: {
     id: "agent",
     emoji: "🤖",
-    name: "Autonomous Agent",
+    icon: "/kiro_functions/hero-img-4.png",
+    name: "Kiro Web (Autonomous)",
     description: "복잡한 작업을 격리된 샌드박스에서 비동기로 실행하고, 완료되면 PR까지 자동 생성합니다. 개발자는 코드 리뷰에만 집중하고, 구현은 에이전트에게 맡길 수 있어요.",
   },
   specs: {
     id: "specs",
     emoji: "📐",
+    icon: "/kiro_functions/hero-img-9.png",
     name: "Specs",
     description: "자연어 한 줄이 요구사항 → 기술 설계 → 실행 가능한 태스크로 자동 분해됩니다. EARS 표기법의 수락 기준까지 포함되어, 모호한 요청이 체계적인 개발 계획으로 바뀌어요.",
   },
   vibe: {
     id: "vibe",
     emoji: "🎨",
+    icon: "/kiro_functions/hero-img-3.png",
     name: "Vibe Coding",
     description: "아이디어가 떠오르면 자연어로 대화하듯 코드를 만들어보세요. 코드, 이미지, 파일을 자유롭게 넘기면서 빠르게 프로토타이핑하고, 변경사항은 diff로 확인 후 적용할 수 있습니다.",
   },
   hooks: {
     id: "hooks",
     emoji: "🔄",
+    icon: "/kiro_functions/hero-img-1.png",
     name: "Hooks",
     description: "파일 저장, 태스크 완료 등 IDE 이벤트에 자동으로 반응하여 테스트 생성, 보안 스캔, 문서 업데이트를 실행합니다. 반복적인 품질 체크를 자동화해서 실수를 원천 차단해요.",
   },
