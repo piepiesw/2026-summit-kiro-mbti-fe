@@ -37,38 +37,38 @@ export const sampleStats = {
 
   // 프로필: 직업군
   roleDistribution: [
-    { name: "개발자/엔지니어", value: 156, color: "#00d4aa" },
-    { name: "PM/기획자", value: 52, color: "#7c5cfc" },
-    { name: "디자이너", value: 38, color: "#ff6b8a" },
-    { name: "데이터 분석가", value: 35, color: "#ffa94d" },
-    { name: "마케터/비즈니스", value: 28, color: "#4dabf7" },
-    { name: "학생/취준생", value: 38, color: "#69db7c" },
+    { name: "開發者 / 工程師", value: 156, color: "#00d4aa" },
+    { name: "PM / 產品企劃", value: 52, color: "#7c5cfc" },
+    { name: "設計師", value: 38, color: "#ff6b8a" },
+    { name: "資料分析師", value: 35, color: "#ffa94d" },
+    { name: "行銷 / 商務", value: 28, color: "#4dabf7" },
+    { name: "學生 / 求職者", value: 38, color: "#69db7c" },
   ],
 
   // AI 사용 빈도
   aiFrequency: [
-    { name: "매일", value: 124, color: "#00d4aa" },
-    { name: "주 2~3회", value: 98, color: "#7c5cfc" },
-    { name: "가끔", value: 78, color: "#ffa94d" },
-    { name: "거의 안 씀", value: 47, color: "#ff6b8a" },
+    { name: "每天", value: 124, color: "#00d4aa" },
+    { name: "一週 2–3 次", value: 98, color: "#7c5cfc" },
+    { name: "偶爾", value: 78, color: "#ffa94d" },
+    { name: "幾乎沒用", value: 47, color: "#ff6b8a" },
   ],
 
   // AI 주요 활용처
   aiStyle: [
-    { name: "문서 작성", value: 82, color: "#00d4aa" },
-    { name: "검색/요약", value: 74, color: "#7c5cfc" },
-    { name: "코드 작성", value: 68, color: "#ff6b8a" },
-    { name: "브레인스토밍", value: 55, color: "#ffa94d" },
-    { name: "번역/외국어", value: 42, color: "#4dabf7" },
-    { name: "아직 안 써봤다", value: 26, color: "#69db7c" },
+    { name: "撰寫文件", value: 82, color: "#00d4aa" },
+    { name: "搜尋 / 摘要", value: 74, color: "#7c5cfc" },
+    { name: "寫程式", value: 68, color: "#ff6b8a" },
+    { name: "腦力激盪", value: 55, color: "#ffa94d" },
+    { name: "翻譯 / 外語", value: 42, color: "#4dabf7" },
+    { name: "還沒試過", value: 26, color: "#69db7c" },
   ],
 
   // AI 기대 기능
   aiExpectation: [
-    { name: "알아서 해주는 것", value: 105, color: "#00d4aa" },
-    { name: "계획 수립", value: 88, color: "#7c5cfc" },
-    { name: "아이디어 구현", value: 92, color: "#ff6b8a" },
-    { name: "반복 자동화", value: 62, color: "#ffa94d" },
+    { name: "自動搞定", value: 105, color: "#00d4aa" },
+    { name: "規劃整理", value: 88, color: "#7c5cfc" },
+    { name: "點子實現", value: 92, color: "#ff6b8a" },
+    { name: "重複自動化", value: 62, color: "#ffa94d" },
   ],
 
   // Kiro 추천 기능 Top3 등장 빈도
@@ -83,16 +83,16 @@ export const sampleStats = {
 
   // 시간대별 참여 (시뮬레이션: AWS Summit 하루)
   hourlyParticipation: [
-    { hour: "09시", count: 8 },
-    { hour: "10시", count: 22 },
-    { hour: "11시", count: 38 },
-    { hour: "12시", count: 25 },
-    { hour: "13시", count: 18 },
-    { hour: "14시", count: 45 },
-    { hour: "15시", count: 52 },
-    { hour: "16시", count: 48 },
-    { hour: "17시", count: 42 },
-    { hour: "18시", count: 30 },
-    { hour: "19시", count: 19 },
+    { hour: "09:00", count: 8 },
+    { hour: "10:00", count: 22 },
+    { hour: "11:00", count: 38 },
+    { hour: "12:00", count: 25 },
+    { hour: "13:00", count: 18 },
+    { hour: "14:00", count: 45 },
+    { hour: "15:00", count: 52 },
+    { hour: "16:00", count: 48 },
+    { hour: "17:00", count: 42 },
+    { hour: "18:00", count: 30 },
+    { hour: "19:00", count: 19 },
   ],
 };

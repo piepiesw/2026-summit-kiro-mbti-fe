@@ -33,17 +33,17 @@ export default function Home() {
           </div>
 
           <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight">
-            나의{" "}
+            我的{" "}
             <span className="bg-gradient-to-r from-accent to-accent-secondary bg-clip-text text-transparent">
               Kiro MBTI
             </span>
-            는?
+            是？
           </h1>
 
           <p className="text-lg md:text-xl lg:text-2xl text-white/60 leading-relaxed">
-            내 성향에 맞는 Kiro 사용법은?
+            適合你的 Kiro 使用方式是什麼？
             <br />
-            16개 질문으로 알아보세요!
+            用 16 道問題找出來！
           </p>
         </div>
 
@@ -93,10 +93,10 @@ export default function Home() {
               boxShadow: "0 4px 24px rgba(144, 70, 255, 0.35), inset 0 1px 0 rgba(255,255,255,0.15)",
             }}
           >
-            <span className="relative z-10">테스트 시작하기</span>
+            <span className="relative z-10">開始測驗</span>
             <div className="absolute inset-0 bg-gradient-to-t from-transparent to-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
           </button>
-          <p className="text-sm text-white/30">약 2분 소요</p>
+          <p className="text-sm text-white/30">約需 2 分鐘</p>
         </div>
 
         {/* Footer */}

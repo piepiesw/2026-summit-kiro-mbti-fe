@@ -16,12 +16,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "나의 Kiro MBTI는? | Kiro",
+  title: "我的 Kiro MBTI 是？ | Kiro",
   description:
-    "AI 시대, 당신은 어떤 타입? 16개 질문으로 알아보는 나의 MBTI!",
+    "AI 時代，你是哪一型？用 16 道問題找出你的 MBTI！",
   openGraph: {
-    title: "나의 Kiro MBTI는? | Kiro",
-    description: "AI 시대, 당신은 어떤 타입? 16개 질문으로 알아보세요!",
+    title: "我的 Kiro MBTI 是？ | Kiro",
+    description: "AI 時代，你是哪一型？用 16 道問題快速測測看！",
     type: "website",
   },
 };
@@ -33,7 +33,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="ko"
+      lang="zh-TW"
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
       <body className="min-h-dvh flex flex-col bg-background text-foreground">

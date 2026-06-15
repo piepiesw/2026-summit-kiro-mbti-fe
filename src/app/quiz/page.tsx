@@ -162,7 +162,7 @@ export default function QuizPage() {
 
   // ---- Render ----
   const isProfile = phase === "profile";
-  const partLabel = isProfile ? "PART 1 — 나에 대해" : "PART 2 — MBTI 검사";
+  const partLabel = isProfile ? "PART 1 — 關於你" : "PART 2 — MBTI 測驗";
 
   const currentChoicesCount = isProfile
     ? profileQuestions[profileIndex].choices.length
@@ -310,7 +310,7 @@ export default function QuizPage() {
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" className="sm:w-4 sm:h-4">
               <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
-            <span className="text-xs sm:text-sm lg:text-base">이전 질문</span>
+            <span className="text-xs sm:text-sm lg:text-base">上一題</span>
           </button>
         ) : (
           <div className="h-7 sm:h-10 lg:h-12" aria-hidden />

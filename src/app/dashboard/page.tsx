@@ -92,7 +92,7 @@ function CustomTooltip({
   return (
     <div className="bg-zinc-900 border border-white/10 rounded-lg px-3 py-2 text-sm">
       <p className="text-white/60">{label}</p>
-      <p className="text-accent font-bold">{payload[0].value}명</p>
+      <p className="text-accent font-bold">{payload[0].value} 人</p>
     </div>
   );
 }
@@ -119,27 +119,27 @@ export default function DashboardPage() {
           </span>
         </div>
         <p className="text-sm lg:text-base text-white/40">
-          AWS Summit Seoul 2026 · Kiro Booth 실시간 통계
+          AWS Summit Seoul 2026 · Kiro Booth 即時統計
         </p>
       </div>
 
       {/* KPI Cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6 mb-8 lg:mb-10">
-        <StatCard label="총 참여자" value={s.totalResponses} sub="명" />
+        <StatCard label="總參與人數" value={s.totalResponses} sub="人" />
         <StatCard
-          label="1위 유형"
+          label="第一名類型"
           value={topType.type}
-          sub={`${topType.count}명`}
+          sub={`${topType.count} 人`}
         />
         <StatCard
-          label="인기 Kiro 기능"
+          label="熱門 Kiro 功能"
           value={topFeature.name}
-          sub={`${topFeature.count}회 추천`}
+          sub={`${topFeature.count} 次推薦`}
         />
         <StatCard
-          label="피크 시간"
+          label="尖峰時段"
           value={peakHour.hour}
-          sub={`${peakHour.count}명 참여`}
+          sub={`${peakHour.count} 人參與`}
         />
       </div>
 
@@ -147,7 +147,7 @@ export default function DashboardPage() {
       <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-8 lg:mb-10">
         {/* MBTI 유형 분포 */}
         <div className="md:col-span-2 p-5 lg:p-6 rounded-2xl bg-white/5 border border-white/10">
-          <SectionTitle>MBTI 유형 분포</SectionTitle>
+          <SectionTitle>MBTI 類型分布</SectionTitle>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={s.typeDistribution}>
               <XAxis
@@ -172,26 +172,26 @@ export default function DashboardPage() {
 
         {/* 축별 비율 */}
         <div className="p-5 lg:p-6 rounded-2xl bg-white/5 border border-white/10">
-          <SectionTitle>축별 비율</SectionTitle>
+          <SectionTitle>各軸向比例</SectionTitle>
           <div className="space-y-5">
             <AxisBar
-              left="E 외향"
-              right="I 내향"
+              left="E 外向"
+              right="I 內向"
               leftPct={s.axisPercentages.E}
             />
             <AxisBar
-              left="S 감각"
-              right="N 직관"
+              left="S 實感"
+              right="N 直覺"
               leftPct={s.axisPercentages.S}
             />
             <AxisBar
-              left="T 사고"
-              right="F 감정"
+              left="T 思考"
+              right="F 情感"
               leftPct={s.axisPercentages.T}
             />
             <AxisBar
-              left="J 판단"
-              right="P 인식"
+              left="J 判斷"
+              right="P 感知"
               leftPct={s.axisPercentages.J}
             />
           </div>
@@ -201,10 +201,10 @@ export default function DashboardPage() {
       {/* Row 2: Profile Stats (4 pie charts) */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6 mb-8 lg:mb-10">
         {[
-          { title: "직업군", data: s.roleDistribution },
-          { title: "AI 사용 빈도", data: s.aiFrequency },
-          { title: "AI 주요 활용처", data: s.aiStyle },
-          { title: "AI 기대 기능", data: s.aiExpectation },
+          { title: "職業", data: s.roleDistribution },
+          { title: "使用 AI 的頻率", data: s.aiFrequency },
+          { title: "AI 主要的使用情境", data: s.aiStyle },
+          { title: "期望 AI 能力", data: s.aiExpectation },
         ].map((chart) => (
           <div
             key={chart.title}
@@ -230,7 +230,7 @@ export default function DashboardPage() {
                 </Pie>
                 <Tooltip
                   formatter={(value: unknown, name: unknown) => [
-                    `${value}명`,
+                    `${value} 人`,
                     String(name),
                   ]}
                   contentStyle={{
@@ -265,7 +265,7 @@ export default function DashboardPage() {
       <div className="grid md:grid-cols-2 gap-6 lg:gap-8 mb-8 lg:mb-10">
         {/* Kiro 추천 기능 분포 */}
         <div className="p-5 lg:p-6 rounded-2xl bg-white/5 border border-white/10">
-          <SectionTitle>Kiro 추천 기능 등장 빈도</SectionTitle>
+          <SectionTitle>Kiro 推薦功能出現頻率</SectionTitle>
           <div className="space-y-3">
             {s.kiroFeatureHits.map((f, i) => {
               const maxCount = s.kiroFeatureHits[0].count;
@@ -284,7 +284,7 @@ export default function DashboardPage() {
                       </span>
                     </span>
                     <span className="text-white/40 font-mono text-xs">
-                      {f.count}회
+                      {f.count} 次
                     </span>
                   </div>
                   <div className="h-2 rounded-full bg-white/5 overflow-hidden">
@@ -307,7 +307,7 @@ export default function DashboardPage() {
 
         {/* 시간대별 참여 */}
         <div className="p-5 lg:p-6 rounded-2xl bg-white/5 border border-white/10">
-          <SectionTitle>시간대별 참여 추이</SectionTitle>
+          <SectionTitle>各時段參與趨勢</SectionTitle>
           <ResponsiveContainer width="100%" height={280}>
             <AreaChart data={s.hourlyParticipation}>
               <defs>

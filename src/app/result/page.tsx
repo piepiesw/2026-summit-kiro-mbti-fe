@@ -75,7 +75,7 @@ function ResultContent() {
           {/* Type badge */}
           <div className="text-center space-y-4">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold" style={{ color: "#c084fc" }}>
-              나의 Kiro MBTI는?
+              我的 Kiro MBTI 是？
             </h2>
             <div className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] xl:w-[32rem] xl:h-[32rem] mx-auto mt-4 sm:mt-6 md:mt-10 lg:mt-12 -mb-2 sm:-mb-4 md:-mb-6 lg:-mb-8">
               {/* Purple glow behind character */}
@@ -163,7 +163,7 @@ function ResultContent() {
           {top3.length > 0 && (
             <div className="animate-fade-in-delay-3 space-y-3 pt-4 lg:pt-6">
               <h3 className="text-base md:text-lg lg:text-xl font-bold text-accent uppercase tracking-wider">
-                당신에게 맞는 Kiro 기능 Top 3
+                最適合你的 Kiro 功能 Top 3
               </h3>
               <div className="space-y-2 lg:space-y-3">
                 {top3.map((feature, i) => (
@@ -221,7 +221,7 @@ function ResultContent() {
               </div>
               <div className="mt-4 p-4 lg:p-5 rounded-xl bg-gradient-to-r from-accent/10 to-accent-secondary/10 border border-accent/30 text-center">
                 <p className="text-base lg:text-lg font-bold text-white">
-                  StoryLane 부스에서 이 기능들을 직접 체험해보세요!
+                  歡迎到 StoryLane 攤位親自體驗這些功能！
                 </p>
               </div>
             </div>
@@ -230,12 +230,12 @@ function ResultContent() {
           {/* 궁합 */}
           <div className="animate-fade-in-delay-4 space-y-4 pt-4 lg:pt-6">
             <h3 className="text-base md:text-lg lg:text-xl font-bold text-accent uppercase tracking-wider">
-              궁합
+              速配指數
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-5">
               {/* Best Match */}
               <div className="p-4 sm:p-5 lg:p-6 rounded-xl sm:rounded-2xl bg-accent/5 border border-accent/20 space-y-3 sm:space-y-4">
-                <div className="text-sm lg:text-base text-accent font-bold">잘 맞는 조합</div>
+                <div className="text-sm lg:text-base text-accent font-bold">最速配</div>
                 <div className="flex items-center gap-4 lg:gap-5">
                   <div className="relative shrink-0 w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24">
                     <Image
@@ -266,7 +266,7 @@ function ResultContent() {
               {/* Challenge Match */}
               <div className="p-4 sm:p-5 lg:p-6 rounded-xl sm:rounded-2xl bg-accent-secondary/5 border border-accent-secondary/20 space-y-3 sm:space-y-4">
                 <div className="text-sm lg:text-base text-accent-secondary font-bold">
-                  안 맞는 조합
+                  最不對盤
                 </div>
                 <div className="flex items-center gap-4 lg:gap-5">
                   <div className="relative shrink-0 w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24">
@@ -302,13 +302,13 @@ function ResultContent() {
           {currentUrl && (
             <div className="animate-fade-in-delay-4 flex flex-col items-center space-y-2 pt-6 lg:pt-8">
               <h3 className="text-base md:text-lg lg:text-xl font-bold text-accent uppercase tracking-wider">
-                QR로 결과 가져가기
+                用 QR Code 帶走結果
               </h3>
               <div className="p-3 lg:p-4 bg-white rounded-xl">
                 <QRCodeSVG value={currentUrl} size={120} className="lg:!w-[160px] lg:!h-[160px]" />
               </div>
               <p className="text-xs sm:text-sm text-white/30">
-                스캔하면 핸드폰에서 결과 이미지를 저장할 수 있어요
+                掃描後就能在手機上儲存結果圖片
               </p>
             </div>
           )}
@@ -326,7 +326,7 @@ function ResultContent() {
             color: "rgba(255,255,255,0.6)",
           }}
         >
-          다시 테스트하기
+          再測一次
         </button>
       </div>
 
@@ -341,7 +341,7 @@ export default function ResultPage() {
     <Suspense
       fallback={
         <main className="flex-1 flex items-center justify-center">
-          <div className="text-white/40">결과 계산 중...</div>
+          <div className="text-white/40">結果計算中…</div>
         </main>
       }
     >
