@@ -37,7 +37,7 @@ export default function Home() {
             <span className="bg-gradient-to-r from-accent to-accent-secondary bg-clip-text text-transparent">
               Kiro MBTI
             </span>
-            是？
+            {" "}是？
           </h1>
 
           <p className="text-lg text-white/60 leading-relaxed">
